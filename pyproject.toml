@@ -1,0 +1,49 @@
+[project]
+name = "aml-insight"
+version = "0.1.0"
+description = "AML Insight: explainable GNN system for suspicious transaction detection and potential money laundering network analysis (AMLSim, research prototype)"
+readme = "README.md"
+authors = [
+    { name = "Rain931101", email = "148304139+Rain931101@users.noreply.github.com" }
+]
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    # --- 資料處理 / EDA (Week 1) ---
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "pyarrow>=16",
+    "matplotlib>=3.8",
+    "pyyaml>=6",
+    "tabulate>=0.9",
+    # --- 圖分析 ---
+    "networkx>=3.3",
+    # --- 機器學習 / 評估 (Week 2+) ---
+    "scikit-learn>=1.5",
+    "xgboost>=2.1",
+    "shap>=0.46",
+    # --- GNN (Week 3+) ---
+    "torch>=2.4,<2.12",  # 2.12+ 無 macOS 13 wheel
+    "torch-geometric>=2.6",
+    # --- 平台 (Week 2 起建立雛形) ---
+    "streamlit>=1.38",
+    "plotly>=5.24",
+    "pyvis>=0.3.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+    "jupyterlab>=4.2",
+    "ipykernel>=6.29",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
