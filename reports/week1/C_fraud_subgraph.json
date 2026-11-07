@@ -1,0 +1,13 @@
+{
+  "dataset": "20K_fanin200cycle200",
+  "center": 68,
+  "radius": 2,
+  "subgraph_nodes": 63,
+  "subgraph_edges": 79,
+  "subgraph_fraud_nodes": 18,
+  "center_in_degree": 1,
+  "center_out_degree": 2,
+  "direct_neighbors": 3,
+  "direct_neighbors_fraud": 2,
+  "global_fraud_rate": 0.0902
+}

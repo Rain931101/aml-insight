@@ -133,7 +133,7 @@ def train_one(model_cls, seed: int, epochs: int = 200, hidden: int = 64) -> dict
 
 
 # %%
-if __name__ == "__main__" or True:
+if __name__ == "__main__":
     seeds = [0, 1, 2, 3, 4]  # 和正式實驗相同的 seed 清單：不只報最好的一次
     results = {}
     for name, cls in [("MLP（只看自己）", MLP), ("GraphSAGE（也看鄰居）", GraphSAGE)]:
