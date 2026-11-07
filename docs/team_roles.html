@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AML Insight 分工表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a working team sheet — summary strip of three roles, then one section per member with a week-by-week table, then handoffs and shared rules. */
+:root {
+  --bg: #f4f6f7;
+  --surface: #ffffff;
+  --ink: #17232b;
+  --muted: #5a6a74;
+  --line: #d9e0e4;
+  --accent: #0f5f73;
+  --a: #2f6fb0;
+  --b: #b26a12;
+  --c: #2c8a5a;
+  --a-soft: #e6eff8;
+  --b-soft: #f8eedf;
+  --c-soft: #e3f3ea;
+  --warn-bg: #fff4e0;
+  --warn-ink: #7a4a00;
+  --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11181d; --surface: #182229; --ink: #e4ecf0; --muted: #9aabb5; --line: #2b3a43;
+    --accent: #5fb7cc; --a: #7fb2e8; --b: #e6a95a; --c: #6fcf9c;
+    --a-soft: #1b2b3b; --b-soft: #33281a; --c-soft: #1a3226;
+    --warn-bg: #3a2c12; --warn-ink: #f3cf8e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11181d; --surface: #182229; --ink: #e4ecf0; --muted: #9aabb5; --line: #2b3a43;
+  --accent: #5fb7cc; --a: #7fb2e8; --b: #e6a95a; --c: #6fcf9c;
+  --a-soft: #1b2b3b; --b-soft: #33281a; --c-soft: #1a3226;
+  --warn-bg: #3a2c12; --warn-ink: #f3cf8e;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 15px; line-height: 1.65;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; display: grid; gap: 28px; }
+header { display: grid; gap: 6px; border-bottom: 2px solid var(--accent); padding-bottom: 18px; }
+.kicker { font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); letter-spacing: .04em; }
+h1 { margin: 0; font-size: 28px; line-height: 1.3; text-wrap: balance; }
+h2 { margin: 0; font-size: 21px; line-height: 1.35; text-wrap: balance; }
+h3 { margin: 0; font-size: 16px; }
+p { margin: 0; }
+.sub { color: var(--muted); max-width: 70ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13.5px; color: var(--muted); }
+.meta b { color: var(--ink); font-weight: 500; }
+code, .mono { font-family: var(--font-mono); font-size: .9em; }
+code { background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; word-break: break-all; }
+
+.roles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.role {
+  background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--role);
+  border-radius: 8px; padding: 16px; display: grid; gap: 8px; align-content: start;
+}
+.role .tag {
+  display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--role);
+}
+.dot { width: 22px; height: 22px; border-radius: 50%; background: var(--role); color: var(--surface);
+  display: inline-grid; place-items: center; font-size: 12px; font-family: var(--font-mono); font-weight: 500; }
+.role .who { font-size: 13px; color: var(--muted); }
+.role ul { margin: 0; padding-left: 18px; font-size: 14px; }
+.ra { --role: var(--a); --soft: var(--a-soft); }
+.rb { --role: var(--b); --soft: var(--b-soft); }
+.rc { --role: var(--c); --soft: var(--c-soft); }
+
+section { display: grid; gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 20px; display: grid; gap: 14px; }
+.member-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.member-head h2 { color: var(--role); }
+.pitch { background: var(--soft); border-left: 3px solid var(--role); padding: 10px 14px; border-radius: 0 6px 6px 0; }
+.files { font-size: 13.5px; color: var(--muted); }
+.files code { color: var(--ink); }
+
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+th { background: var(--bg); font-weight: 500; color: var(--muted); font-size: 13px; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.wk { font-family: var(--font-mono); font-weight: 500; white-space: nowrap; color: var(--role, var(--accent)); width: 58px; }
+td ol, td ul { margin: 0; padding-left: 18px; }
+td li + li { margin-top: 2px; }
+.col-task { width: 58%; }
+
+.learn { font-size: 14px; }
+.learn b { font-weight: 500; }
+.note { background: var(--warn-bg); color: var(--warn-ink); border-radius: 6px; padding: 10px 14px; font-size: 14px; }
+.pill { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; font-weight: 500;
+  background: var(--soft); color: var(--role); white-space: nowrap; }
+
+.shared ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.setup ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+pre { margin: 6px 0 0; background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
+  padding: 10px 12px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.55; }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@page { size: A4; margin: 14mm 12mm; }
+@media print {
+  body { background: #fff; font-size: 12.5px; }
+  .wrap { max-width: none; padding: 0; gap: 18px; }
+  .card { border-color: #cfd8dc; padding: 14px; }
+  .card.ra, .card.rb, .card.rc { break-before: page; }
+  tr, .role, .note { break-inside: avoid; }
+  table { min-width: 0; font-size: 12px; }
+  th, td { padding: 6px 8px; }
+  .tbl { overflow: visible; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+@media (max-width: 760px) {
+  .roles { grid-template-columns: 1fr; }
+  h1 { font-size: 23px; }
+  .wrap { padding: 22px 16px 48px; }
+  .card { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">AML INSIGHT · 畢業專題 · 8 週分工</div>
+  <h1>AML Insight 智慧金流風險分析平台：三人分工表</h1>
+  <p class="sub">結合圖神經網路與可解釋人工智慧之異常金流偵測與潛在洗錢網絡分析系統。每位成員負責固定的資料夾，避免改到同一批檔案；所有交接點列在最後。</p>
+  <div class="meta">
+    <span>Repo：<b><a href="https://github.com/Rain931101/aml-insight">github.com/Rain931101/aml-insight</a></b></span>
+    <span>資料：<b>IBM AMLSim 20K 樣本</b>（主要資料集 <span class="mono">20K_fanin200cycle200</span>）</span>
+    <span>預測任務：<b>帳戶層級節點分類</b></span>
+  </div>
+</header>
+
+<div class="roles">
+  <div class="role ra">
+    <span class="tag"><span class="dot">A</span>資料工程與圖建構</span>
+    <span class="who">負責人：陳暐捷</span>
+    <ul>
+      <li>資料清理、EDA、特徵工程</li>
+      <li>圖建構（NetworkX / PyG）</li>
+      <li>時間視窗特徵、洩漏檢查</li>
+    </ul>
+  </div>
+  <div class="role rb">
+    <span class="tag"><span class="dot">B</span>機器學習與實驗評估</span>
+    <span class="who">負責人：陳楷融</span>
+    <ul>
+      <li>評估指標、資料切分</li>
+      <li>Rule-based、XGBoost、SHAP</li>
+      <li>E1–E5 實驗與結果分析</li>
+    </ul>
+  </div>
+  <div class="role rc">
+    <span class="tag"><span class="dot">C</span>GNN 與系統整合</span>
+    <span class="who">負責人：劉泳頡</span>
+    <ul>
+      <li>GraphSAGE、GNNExplainer</li>
+      <li>Streamlit 平台、網絡視覺化</li>
+      <li>GitHub 管理、系統整合、Demo</li>
+    </ul>
+  </div>
+</div>
+
+<div class="note"><b>開工前必讀：</b>第一週已發現金額小於 100 的交易 100% 發生在詐欺帳戶之間（模擬器產物），以及 <span class="mono">fraudStep</span> 欄位會洩漏標籤。所以所有模型都要跑 S1（含金額特徵）與 S2（不含金額特徵）兩種設定，且 <span class="mono">isFraud</span>、<span class="mono">fraudStep</span> 不得當作特徵。詳見 repo 的 <span class="mono">docs/data_dictionary.md</span> 與 <span class="mono">docs/modeling_decision.md</span>。</div>
+
+<!-- ============ A ============ -->
+<section class="card ra" id="member-a">
+  <div class="member-head"><h2>成員 A：資料工程與圖建構（陳暐捷）</h2><span class="pill">產出是 B、C 的輸入，進度不能落後</span></div>
+  <p class="pitch">把原始交易資料變成模型可以用的乾淨資料、特徵和圖。</p>
+  <p class="files">負責檔案：<code>src/aml_insight/data/</code>（<code>split.py</code> 除外）、<code>src/aml_insight/features/</code>、<code>src/aml_insight/graph/</code>、<code>notebooks/A_*</code></p>
+  <div class="tbl"><table>
+    <thead><tr><th>週次</th><th class="col-task">工作內容</th><th>驗收標準</th></tr></thead>
+    <tbody>
+      <tr><td class="wk">W1</td><td><ol>
+        <li>用 notebook 親自驗算報告的關鍵數字：詐欺比例、fraudStep 交叉表、金額小於 100 的規則</li>
+        <li>EDA：金額分布、每個 step 的交易量、依標籤分組的度數分布</li>
+        <li>決定 self-loop（15 筆）、重複交易（1,684 筆）、無交易帳戶（20 個）的處理方式</li></ol></td>
+        <td>數字和報告一致；至少 6 張 EDA 圖，每張附解讀；處理方式與理由寫入資料字典</td></tr>
+      <tr><td class="wk">W2</td><td><ol>
+        <li>資料清理模組 <code>data/clean.py</code></li>
+        <li>帳戶特徵模組 <code>features/account.py</code>：轉入／轉出次數、金額總和與平均、入度／出度、淨流量、交易間隔、活躍 step 數</li>
+        <li>特徵分成「金額類」與「非金額類」兩組，供 S1／S2 使用</li>
+        <li>特徵函式可指定只用 step ≤ T 的交易，供 E3 時間切分使用</li></ol></td>
+        <td>輸出 <code>data/processed/features.parquet</code>；有測試證明 T=89 時不會用到之後的交易；文件列出每個特徵的定義</td></tr>
+      <tr><td class="wk">W3</td><td><ol>
+        <li>圖建構模組 <code>graph/build.py</code>：帳戶為節點、轉帳為有向邊</li>
+        <li>同一對帳戶間的多筆交易聚合成邊特徵（次數、金額總和、最早與最晚時間），不能直接丟掉</li>
+        <li>鄰居特徵：鄰居數、局部密度、2-hop 鄰居數</li>
+        <li>輸出 NetworkX 圖（給平台）與 PyG <code>Data</code>（給 C）</li></ol></td>
+        <td>C 能直接載入 PyG <code>Data</code> 訓練；節點數 20,000；邊數與原始交易數對得上</td></tr>
+      <tr><td class="wk">W4</td><td><ol>
+        <li>資料洩漏總檢查：確認特徵沒有用到標籤、fraudStep 或未來交易</li>
+        <li>分析 576 個沒有小額交易的詐欺帳戶和其他詐欺帳戶的差別</li></ol></td>
+        <td><code>docs/leakage_checklist.md</code>；難辨識子集分析報告</td></tr>
+      <tr><td class="wk">W5</td><td>準備 E2 消融實驗的資料變體：移除部分節點特徵、保持度數的隨機重接邊、移除邊</td>
+        <td>每個變體都有可重現的產生函式，並固定 seed</td></tr>
+      <tr><td class="wk">W6</td><td>平台資料：交易列表、帳戶列表、局部子圖查詢函式（給定帳戶回傳 1～2 層鄰居）</td>
+        <td>C 能在 Streamlit 中呼叫，回應時間 1 秒內</td></tr>
+      <tr><td class="wk">W7–8</td><td>論文「資料與方法」章節：資料描述、前處理、特徵、圖建構、資料限制</td>
+        <td>初稿完成，所有數字都來自實際程式輸出</td></tr>
+    </tbody>
+  </table></div>
+  <p class="learn"><b>要先學的：</b>pandas groupby／merge、NetworkX 基本操作、PyG <code>Data</code> 格式（<code>x</code>、<code>edge_index</code>、<code>edge_attr</code>）</p>
+</section>
+
+<!-- ============ B ============ -->
+<section class="card rb" id="member-b">
+  <div class="member-head"><h2>成員 B：機器學習與實驗評估（陳楷融）</h2><span class="pill">決定研究結論站不站得住</span></div>
+  <p class="pitch">負責公平地比較模型：基準模型、評估流程、所有實驗與 SHAP。</p>
+  <p class="files">負責檔案：<code>src/aml_insight/evaluation/</code>、<code>src/aml_insight/data/split.py</code>、<code>src/aml_insight/models/rule_based.py</code>、<code>src/aml_insight/models/xgb.py</code>、<code>src/aml_insight/explain/shap_*.py</code>、<code>experiments/</code>、<code>configs/</code></p>
+  <div class="tbl"><table>
+    <thead><tr><th>週次</th><th class="col-task">工作內容</th><th>驗收標準</th></tr></thead>
+    <tbody>
+      <tr><td class="wk">W1</td><td><ol>
+        <li>評估指標模組 <code>evaluation/metrics.py</code>：PR-AUC、Precision@K、Recall@K（K = 100、500、正樣本數）、F1、Confusion Matrix、ROC-AUC</li>
+        <li>資料切分 <code>data/split.py</code>：分層隨機 60/20/20，seed 清單 [0, 1, 2, 3, 4]</li>
+        <li>實驗協定草稿 <code>docs/experiment_protocol.md</code>：E1–E5 的 RQ、假設、自變數、應變數、設定、指標、限制</li></ol></td>
+        <td>測試以手算小例子驗證指標；三份切分不重疊，正樣本比例差小於 0.5 個百分點；三人審過協定</td></tr>
+      <tr><td class="wk">W2</td><td><ol>
+        <li>Rule-based：兩組規則——含金額規則、不含金額規則（例如次數或度數超過 validation 上的第 95 百分位）</li>
+        <li>XGBoost：以 <code>scale_pos_weight</code> 處理不平衡，S1、S2 各訓練一個</li>
+        <li>統一實驗執行器：讀 config，輸出指標 JSON，記錄 seed 與 git commit</li></ol></td>
+        <td>每個實驗產生 <code>experiments/&lt;id&gt;/metrics.json</code>；閾值只在 validation set 決定</td></tr>
+      <tr><td class="wk">W3</td><td>XGBoost 超參數調整（只用 validation set）：max_depth、learning_rate、n_estimators 等</td>
+        <td>調參紀錄完整；test set 只評估一次</td></tr>
+      <tr><td class="wk">W4</td><td><ol>
+        <li>E1 主要模型比較：Rule-based、XGBoost、GraphSAGE（C 提供），S1、S2 都要跑</li>
+        <li>錯誤案例分析：哪些詐欺帳戶所有模型都抓不到</li></ol></td>
+        <td>比較表與 PR 曲線；錯誤案例報告</td></tr>
+      <tr><td class="wk">W5</td><td><ol>
+        <li>SHAP：全域特徵重要度、Summary Plot、個別預測解釋</li>
+        <li>E2 消融實驗（用 A 的資料變體）</li>
+        <li>解釋忠實度：移除 SHAP 最重要特徵後，預測分數下降多少</li></ol></td>
+        <td>SHAP 圖表；消融結果表；忠實度分析</td></tr>
+      <tr><td class="wk">W6</td><td>E3 時間切分實驗（用 A 的時間視窗特徵）</td>
+        <td>時間切分與隨機切分的效能比較</td></tr>
+      <tr><td class="wk">W7</td><td>E5 穩定性：5 個 seed 重跑主要模型；統整所有實驗結果</td>
+        <td>報告平均值 ± 標準差與最佳值，不能只報最好的那次</td></tr>
+      <tr><td class="wk">W8</td><td>論文「實驗與結果」章節，結果圖表定稿</td>
+        <td>每個數字都能追溯到 <code>experiments/</code> 的檔案</td></tr>
+    </tbody>
+  </table></div>
+  <p class="learn"><b>要先學的：</b>scikit-learn metrics、XGBoost 參數、為什麼不平衡資料不能看 accuracy、SHAP TreeExplainer</p>
+</section>
+
+<!-- ============ C ============ -->
+<section class="card rc" id="member-c">
+  <div class="member-head"><h2>成員 C：GNN 與系統整合（劉泳頡）</h2><span class="pill">把所有成果串成可以 Demo 的系統</span></div>
+  <p class="pitch">負責 GraphSAGE、GNNExplainer，以及最後展示用的 Streamlit 平台。</p>
+  <p class="files">負責檔案：<code>src/aml_insight/models/graphsage.py</code>、<code>src/aml_insight/explain/gnn_*.py</code>、<code>src/aml_insight/viz/</code>、<code>app/</code></p>
+  <div class="tbl"><table>
+    <thead><tr><th>週次</th><th class="col-task">工作內容</th><th>驗收標準</th></tr></thead>
+    <tbody>
+      <tr><td class="wk">W1</td><td><ol>
+        <li>GitHub 設定：<code>main</code> 分支保護、Issue 標籤（P0／P1／P2、data、model、xai、app、experiment、bug）、Project 看板、Week 1～8 Milestone</li>
+        <li>跑 PyG 官方 GraphSAGE 範例（Cora）</li>
+        <li>用 NetworkX 畫出一個詐欺帳戶的 1～2 層局部網絡</li>
+        <li>Streamlit 首頁骨架 <code>app/Home.py</code></li></ol></td>
+        <td>看板可用；範例 notebook 能執行；網絡圖依標籤上色、邊有方向；首頁數字來自實際資料</td></tr>
+      <tr><td class="wk">W2</td><td><ol>
+        <li>用 A 的初版特徵手動組 PyG <code>Data</code>，試跑 GraphSAGE</li>
+        <li>Streamlit 頁面框架與共用元件（側邊欄、資料載入快取）</li></ol></td>
+        <td>能跑完一次訓練（效果好壞不重要）；平台能切換頁面</td></tr>
+      <tr><td class="wk">W3</td><td>正式 GraphSAGE <code>models/graphsage.py</code>：2 層 SAGEConv、hidden 64、mean aggregation；class weight 處理不平衡；以 validation PR-AUC 做 early stopping。<br><b>注意：</b>基本 SAGEConv 不使用邊特徵，報告要寫清楚金額與時間如何轉成節點特徵。</td>
+        <td>輸出格式與 B 的評估模組相容；S1、S2 都能跑</td></tr>
+      <tr><td class="wk">W4</td><td><ol>
+        <li>GraphSAGE 結果交給 B 做 E1 比較</li>
+        <li>GNN 錯誤案例分析：和 XGBoost 比，哪些帳戶 GNN 抓得到、哪些抓不到</li></ol></td>
+        <td>錯誤分析報告</td></tr>
+      <tr><td class="wk">W5</td><td><ol>
+        <li>GNNExplainer：重要的邊、節點特徵、局部子圖</li>
+        <li>解釋評估：移除重要邊後預測分數的變化（Edge Removal Test）；同一帳戶多次解釋是否一致</li></ol></td>
+        <td>至少 5 個代表性案例；忠實度與穩定性數據</td></tr>
+      <tr><td class="wk">W6</td><td>完成平台 5 個頁面：Dashboard、交易分析、金流網絡分析（PyVis，可展開 1～2 層鄰居）、AI 判斷解釋、模型比較。<br><b>提醒：</b>交易分數由兩端帳戶推算，畫面要標示清楚。</td>
+        <td>圖表都讀實際實驗輸出；不一次顯示全部 2 萬個帳戶</td></tr>
+      <tr><td class="wk">W7</td><td>系統整合與測試；個案分析頁（P1，有時間才做）；模型推論介面</td>
+        <td>從頭到尾跑一次不出錯</td></tr>
+      <tr><td class="wk">W8</td><td>Demo 準備：操作說明、備援展示案例（截圖或錄影）、論文「系統設計」章節</td>
+        <td>Demo 彩排成功</td></tr>
+    </tbody>
+  </table></div>
+  <p class="learn"><b>要先學的：</b>PyTorch 訓練迴圈、PyG <code>SAGEConv</code> 與 transductive 訓練（mask）、Streamlit 基本元件、PyVis</p>
+</section>
+
+<!-- ============ Handoffs ============ -->
+<section class="card" id="handoffs">
+  <h2>成員之間的交接點</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>時間</th><th>誰 → 誰</th><th>交接內容</th></tr></thead>
+    <tbody>
+      <tr><td class="wk">W2 結束</td><td>A → B、C</td><td>特徵檔，分 S1／S2 兩組</td></tr>
+      <tr><td class="wk">W2 結束</td><td>B → C</td><td>切分函式與評估指標模組（C 訓練 GraphSAGE 要用）</td></tr>
+      <tr><td class="wk">W3 結束</td><td>A → C</td><td>PyG <code>Data</code> 正式版</td></tr>
+      <tr><td class="wk">W4 中</td><td>C → B</td><td>GraphSAGE 預測結果，用於 E1 比較</td></tr>
+      <tr><td class="wk">W5 結束</td><td>B → C</td><td>SHAP 輸出檔（與 C 自己的 GNNExplainer 輸出）給平台使用</td></tr>
+      <tr><td class="wk">W6</td><td>A → C</td><td>平台用的子圖查詢函式</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note"><b>最關鍵的風險：</b>A 在 W2 的特徵若延誤，B 和 C 都會卡住。建議 A 在 W2 週中先交出簡單版特徵讓大家開工，之後再補完整。</p>
+</section>
+
+<!-- ============ Shared ============ -->
+<section class="card shared" id="shared">
+  <h2>全員共同責任</h2>
+  <ul>
+    <li><b>每週例會</b>約 1 小時，紀錄寫在 <code>docs/meetings/weekN.md</code></li>
+    <li><b>研究設計</b>三人一起確認：RQ、實驗設計、S1／S2 設定</li>
+    <li><b>Code review</b>：每個 PR 至少由另一位成員看過才能合併</li>
+    <li><b>論文與簡報</b>：各自寫自己負責的方法、實驗與結果章節，最後兩週一起整合</li>
+    <li><b>研究倫理</b>：不使用洩漏欄位、不在測試集上反覆調整、不虛構數據；模型分數不是犯罪證據</li>
+  </ul>
+  <h3>GitHub 規則</h3>
+  <ul>
+    <li>分支命名：<code>feat/&lt;成員&gt;-&lt;主題&gt;</code>、<code>fix/…</code>、<code>exp/&lt;實驗代號&gt;</code>（例：<code>feat/b-metrics</code>）</li>
+    <li>Commit 訊息：<code>&lt;type&gt;: &lt;說明&gt;</code>，type 為 feat / fix / data / exp / docs / refactor / test</li>
+    <li>不要 commit：原始資料、模型權重、<code>.env</code>（已在 <code>.gitignore</code>）</li>
+  </ul>
+</section>
+
+<!-- ============ Setup ============ -->
+<section class="card setup" id="setup">
+  <h2>第一天：在自己的電腦上建好環境</h2>
+  <ol>
+    <li>接受 GitHub 邀請：到 <a href="https://github.com/Rain931101/aml-insight/invitations">github.com/Rain931101/aml-insight/invitations</a> 點 Accept（7 天內有效）。</li>
+    <li>打開「終端機」（Terminal），一次執行一行：
+<pre>git clone https://github.com/Rain931101/aml-insight.git
+cd aml-insight && uv sync && bash scripts/00_fetch_amlsim_samples.sh
+uv run python scripts/02_label_quality_analysis.py && uv run pytest</pre></li>
+    <li>確認跑出的報告數字與 repo 一致（主要資料集詐欺帳戶 1,804 個、9.02%），測試全部通過。</li>
+  </ol>
+  <p class="sub">還沒有 uv：先執行 <code>brew install uv</code>；沒有 Homebrew 要先安裝 Homebrew。使用 Windows 的組員請先告知，指令不同。</p>
+</section>
+
+<footer>AML Insight 研究專題內部分工表。AMLSim 為合成資料，研究結果不代表真實銀行環境的效能。</footer>
+</div>
+</body>
+</html>
