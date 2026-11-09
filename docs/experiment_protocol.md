@@ -1,6 +1,6 @@
 # 成員 B 實驗協定（E1–E5）
 
-版本：2026-11-07。實作範圍依使用者確認，只包含成員 B。
+版本：2026-11-09。實作範圍依使用者確認，只包含成員 B。
 本協定與程式是交付成果；尚未取得 A／C 正式輸入，沒有正式研究結果。
 
 ## 任務與研究問題
@@ -11,9 +11,9 @@
 | 實驗 | RQ／假設（待驗證） | 自變數 | 應變數 | 固定控制與限制 |
 |---|---|---|---|---|
 | E1 | RQ1：圖資訊是否優於規則及表格模型？ | Rule-based／XGBoost／C 的 GraphSAGE，S1／S2 | AP、Top-K、F1、ROC-AUC | 相同帳戶切分；C 未提供時只報兩模型，三模型比較 pending |
-| E2 | RQ1：哪些特徵群組貢獻辨識力？ | A 定義的 behavior／structure／temporal 群組移除 | 同上及相對完整設定差異 | XGBoost、相同 seed；每個變體使用同一預定 grid 選參；S1 去金額即 S2，不重跑 |
+| E2 | RQ1：節點特徵與圖關係如何貢獻辨識力？ | 移除部分節點特徵、保持度數的隨機重接邊、移除邊 | 同上及相對完整設定差異 | 現有工具只產生 XGBoost 特徵消融；圖變體由 A、GraphSAGE 由 C 提供後接入；相同 seed／帳戶切分／選參預算；S1 去金額即 S2，不重跑 |
 | E3 | RQ3：時間視窗轉移是否改變效能？ | 隨機全視窗 vs 早視窗 train/validation、晚視窗 test | 同上 | 相同帳戶 manifest；A 提供無未來資訊特徵；靜態標籤不能證明未來新詐欺預測 |
-| E4 | 原圖未定義 | 未定義 | 未定義 | 不自行發明，pending 規格 |
+| E4 | 模型如何利用特徵與交易網絡預測？ | 代表帳戶的 XGBoost + SHAP 與 GraphSAGE + GNNExplainer 解釋 | 特徵貢獻、重要子圖與案例異同 | B 提供 SHAP，C 提供 GNNExplainer；完整案例對照 pending C；沿用鎖定模型與相同帳戶，不重新選參或重跑 test |
 | E5 | RQ3：主要模型在切分變動下是否穩定？ | seeds 0、1、2、3、4 | 平均、樣本 SD、最佳值 | 直接彙整 E1 已鎖定的五次結果，不額外重測同一 seed |
 
 ## 分層切分
@@ -67,9 +67,15 @@ high 使用第 95 百分位、low 使用第 5 百分位（等同反向特徵第 
 - 無正樣本 AP／Recall 為 null；單類 ROC-AUC 為 null，另存原因；無預測正樣本 F1 採 0。
 - 不採 accuracy 作主指標：類別不平衡時全部預測正常仍可很高。
 
-## SHAP 與忠實度
+## E2 圖結構消融的接入邊界
 
-僅解釋鎖定 XGBoost。TreeExplainer 採 interventional、probability 空間，背景樣本只取 train。
+A 須提供變體版本、產生 seed、重接／移除比例、度數保持檢查與時間界線；固定帳戶集合、標籤及 split。需預先聲明節點特徵固定或隨變體重算，以區分圖關係與圖衍生特徵的效果。C 在各變體依相同訓練預算產生 GraphSAGE 結果。現有 `drop_groups` 僅表示特徵消融，不能代表已執行重接邊或移除邊。
+
+## E4 SHAP、案例分析與忠實度
+
+完整 E4 尚待 C 的 GraphSAGE + GNNExplainer。預先記錄代表案例選取規則（如 TP／FP／FN／TN）、帳戶 ID 與理由，兩種解釋使用相同帳戶；案例不能取代整體指標。沿用既有 E1 鎖定模型執行 explain 即可，不為 E4 重複測試。`experiment: E4` 可載入，但不代表完整對照已完成。
+
+B 僅解釋鎖定 XGBoost。TreeExplainer 採 interventional、probability 空間，背景樣本只取 train。
 seed 固定，預設最多 100 背景、200 個 test 解釋帳戶。報告只代表該抽樣，不假稱整份 test。
 保存 mean absolute SHAP、summary plot、第一個抽樣帳戶 waterfall、每個帳戶 SHAP 值／base value／分數及原始特徵。
 驗證 base value + SHAP 加總與模型分數誤差 <1e-4。

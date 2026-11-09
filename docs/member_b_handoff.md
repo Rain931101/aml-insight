@@ -5,14 +5,13 @@
 在專案根目錄：
 
 ```bash
-bash scripts/setup_b.sh
+uv sync --locked
 bash scripts/check_b.sh -q
 bash scripts/run_b.sh --help
 ```
 
-`requirements-b.lock` 是本次已實測的最小 B 環境套件版本；不需要安裝 C 的 torch／PyG 或平台套件。
-既有 `uv sync` 全專案流程仍保留。Python 需 3.11–3.12，本次使用 3.11。
-Mac 無 Homebrew libomp 時，啟動腳本使用環境內 sklearn/.dylibs/libomp.dylib；若 wheel 未附帶，可依原 README 安裝 libomp。
+套件統一由 `pyproject.toml` + `uv.lock` 管理，以 `uv sync --locked` 安裝、`uv run` 執行；不另維護 B 版本清單。Python 需 3.11–3.12。
+macOS 先執行 `brew install libomp`；啟動腳本不再設定 PYTHONPATH 或 OpenMP runtime 繞路。
 SHAP／Matplotlib 的第三方 PendingDeprecationWarning 不影響本次驗證，沒有隱藏警告。
 
 ## A 需要提供什麼
@@ -81,7 +80,7 @@ bash scripts/run_b.sh suite configs/member_b.example.yaml configs/generated-memb
 輸出 E1 S1/S2 × 五 seeds、可行的 E2 非金額群組移除 × 五 seeds。
 產生時間實驗時，base config 的 `features` 是全視窗基準，另提供 `time_train_features`（早視窗）及 `time_test_features`（晚視窗）。
 產生器只把 E3 的 `features` 改為早視窗，E1 保留全視窗；缺少獨立早視窗路徑會報錯。不要以全視窗特徵訓練 E3。
-E2 只跑 XGBoost；S1 移除 amount 已等於 S2，避免重跑。E5 由 E1 五 seeds 彙整。
+目前產生的 E2 特徵消融只跑 XGBoost；圖結構消融（保持度數重接邊、移除邊）待 A 提供受控變體及 C 的 GraphSAGE 結果，尚未接入批次工具。S1 移除 amount 已等於 S2，避免重跑。E5 由 E1 五 seeds 彙整。
 C 輸入／manifest 不會從 base 複製到所有 seeds，需每份設定接入正確變體。
 每份設定依序 tune → 檢視 validation 記錄 → finalize；需要解釋的 run 再 explain。
 若保留同一組多個候選研究 run，aggregate 會拒絕重複 seed，請指定只含選定 run 的資料夾。
@@ -140,3 +139,7 @@ bash scripts/smoke_b.sh /tmp/aml-b-smoke-new
 ```
 
 執行 aggregate 後才會產生 `reports/member_b/results/results.md`；全新 clone 不包含本機產出的報告。目前尚無正式結果，產生的章節應如實標示 pending。
+
+## E4 可解釋 AI 案例分析
+
+沿用已鎖定的模型、切分與 SHAP 輸出，挑選代表性 TP／FP／FN／TN 帳戶，保存選例理由及 nodeid，與 C 相同帳戶的 GraphSAGE + GNNExplainer 對照。不得因案例分析重新選參或重跑 test 評估。完整案例分析 pending C；現有 explain 可直接用於 E1 完成的 run，不必為 E4 重訓同一模型。
