@@ -93,7 +93,7 @@ IBM AMLSim：<https://github.com/IBM/AMLSim>（官方 repo 內 `sample/*.tgz` 20
 已新增指標、分層切分、S1/S2 規則、XGBoost validation-only 調參、一次性 test 評估、SHAP／忠實度、特徵消融與五 seeds 設定、來源可追溯的結果彙整。
 
 ```bash
-bash scripts/setup_b.sh
+uv sync --locked
 bash scripts/check_b.sh -q
 bash scripts/run_b.sh --help
 ```
@@ -102,4 +102,4 @@ bash scripts/run_b.sh --help
 研究方法：[docs/experiment_protocol.md](docs/experiment_protocol.md)。
 設定範例：[configs/member_b.example.yaml](configs/member_b.example.yaml)。
 
-目前尚無 A 正式特徵、C GraphSAGE 或時間特徵，因此實作驗證使用測試資料；不代表正式 E1–E5 已完成。原圖未定義 E4，保留待確認。
+目前尚無 A 正式特徵、C GraphSAGE 或時間特徵，因此實作驗證使用測試資料；不代表正式 E1–E5 已完成。E2 包含特徵與圖結構消融；目前提供特徵群組移除，圖結構變體與 GraphSAGE 結果待 A／C。E4 為可解釋 AI 案例分析：B 提供 XGBoost + SHAP，與 C 的 GraphSAGE + GNNExplainer 代表案例對照仍 pending。
