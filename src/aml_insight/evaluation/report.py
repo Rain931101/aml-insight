@@ -203,7 +203,7 @@ def aggregate(root, output, include_test=False):
     lines += ["", "## 研究問題與交付狀態", ""]
     for exp, description in [
         ("E1", "S1/S2 三模型比較"),
-        ("E2", "特徵消融"),
+        ("E2", "特徵與圖結構消融（圖變體及 GraphSAGE 結果待 A／C）"),
         ("E3", "時間視窗轉移與隨機切分比較"),
         ("E5", "五 seeds 穩定性"),
     ]:
@@ -215,7 +215,7 @@ def aggregate(root, output, include_test=False):
             + ("有部分 run，需依下列來源檢視設定完整性。" if relevant else "pending。")
         )
     lines += [
-        "- E4：原始要求未定義，pending 規格。",
+        "- E4 可解釋 AI 案例分析：XGBoost + SHAP 工具已提供；代表案例及 GraphSAGE + GNNExplainer 對照 pending C。",
         "- GraphSAGE、時間特徵、特徵消融及無小額交易子群：依 A／C 輸入到齊程度判讀。",
         "- SHAP 與忠實度檔位於各 run/shap/；未產生時不可宣稱完成解釋。",
         "",

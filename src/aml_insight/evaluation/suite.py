@@ -74,8 +74,9 @@ def generate_suite(config_path, output):
         output / "pending.json",
         {
             "configs_generated": count,
-            "E4": "Undefined in original requirements",
+            "E4": "Explainable AI case analysis: XGBoost + SHAP available; pending C GraphSAGE + GNNExplainer and representative matched cases",
             "E5": "Aggregate E1 seed 0..4 artifacts; do not rerun the same test split",
+            "E2_graph": "Pending A controlled graph variants and C GraphSAGE results; generated configs cover feature ablation only",
             "E2_amount": "S1 without amount equals S2; compare E1 S1/S2 instead of rerunning",
             "E2_models": "XGBoost only; ablated rule features may no longer exist",
             "E3": "Separate full/early/late feature paths configured"

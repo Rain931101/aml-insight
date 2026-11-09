@@ -36,8 +36,8 @@ def load_config(path):
     cfg = yaml.safe_load(path.read_text())
     if cfg.get("seed") not in SEEDS or cfg.get("setting") not in ("S1", "S2"):
         raise ValueError("Expected seed 0..4 and setting S1/S2")
-    if cfg.get("experiment") not in ("E1", "E2", "E3", "E5"):
-        raise ValueError("Experiment must be E1/E2/E3/E5; E4 is undefined")
+    if cfg.get("experiment") not in ("E1", "E2", "E3", "E4", "E5"):
+        raise ValueError("Experiment must be E1/E2/E3/E4/E5")
     if not cfg.get("run_id") or Path(cfg["run_id"]).name != cfg["run_id"]:
         raise ValueError("run_id must be a single directory name")
     return cfg, path.parent
