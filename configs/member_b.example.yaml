@@ -37,7 +37,10 @@ xgb_grid:
 #   validation: ../data/processed/C/S1-seed0/validation.csv
 #   test: ../data/processed/C/S1-seed0/test.csv
 # E2: experiment: E2, drop_groups: [structure], include_rules: false
-# E3: experiment: E3, plus early-window features in features above and:
+# For suite generation: keep features above as the FULL-window E1 baseline;
+# provide a SEPARATE early-window training table and late-window test table:
+# time_train_features: ../data/processed/account_features_steps1_89.parquet
+# For a manually authored single E3 config: set experiment: E3 and features to the early table.
 # time_test_features: ../data/processed/account_features_steps90_149.parquet
 # time:
 #   train_start: 1
