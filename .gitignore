@@ -31,3 +31,9 @@ models/*
 .ipynb_checkpoints/
 .pytest_cache/
 .ruff_cache/
+
+# Generated member-B configs
+configs/generated-member-b/
+
+# Rebuild synthetic verification artifacts with scripts/smoke_b.sh
+reports/member_b/smoke/
