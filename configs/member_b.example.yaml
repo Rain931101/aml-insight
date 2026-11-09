@@ -1,0 +1,47 @@
+# Interface example, NOT a claim that A's features already exist.
+# Relative paths resolve from this config file's directory.
+run_id: member-b-E1-S1-seed0
+experiment: E1
+purpose: research
+seed: 0
+setting: S1
+features: ../data/processed/account_features.parquet
+output_root: ../experiments
+include_rules: true
+feature_spec:
+  groups:
+    amount: [init_balance, total_amount, min_amount]
+    behavior: [tx_count, counterparty_count]
+    structure: [in_degree, out_degree]
+    temporal: [active_steps, time_span]
+rules:
+  S1:
+    - {feature: min_amount, direction: low}
+    - {feature: total_amount, direction: high}
+    - {feature: tx_count, direction: high}
+  S2:
+    - {feature: tx_count, direction: high}
+    - {feature: counterparty_count, direction: high}
+    - {feature: in_degree, direction: high}
+rule_quantile: 0.95
+xgb_grid:
+  max_depth: [3, 5, 7]
+  learning_rate: [0.05, 0.1]
+  n_estimators: [100, 300]
+# Optional: A supplies nodeid,has_small_amount for subgroup recall (never model inputs).
+# analysis_metadata: ../data/processed/account_analysis_metadata.csv
+# Optional: export via split command before C trains, then attach here.
+# split_manifest: ../experiments/manifests/seed0.json
+# graphsage:
+#   metadata: ../data/processed/C/S1-seed0/metadata.json
+#   validation: ../data/processed/C/S1-seed0/validation.csv
+#   test: ../data/processed/C/S1-seed0/test.csv
+# E2: experiment: E2, drop_groups: [structure], include_rules: false
+# E3: experiment: E3, plus early-window features in features above and:
+# time_test_features: ../data/processed/account_features_steps90_149.parquet
+# time:
+#   train_start: 1
+#   train_end: 89
+#   test_start: 90
+#   test_end: 149
+#   feature_observation_attestation: "A: version/commit; no transactions after each window end"
