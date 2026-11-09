@@ -48,6 +48,15 @@ high 使用第 95 百分位、low 使用第 5 百分位（等同反向特徵第 
 改 config 必須建立新 run，但這不能把反覆查看相同 test 當作新的獨立證據。
 輸出 metrics、預測、PR 圖、錯誤案例後另保存結果指紋；彙整拒絕結果檔變更與重複 seed。
 
+## 時間實驗批次設定的三份輸入
+
+`suite` 的 base config 中，`features` 固定代表全視窗特徵，用於 E1 隨機切分基準。
+若要產生 E3，必須另外提供 `time_train_features`（早視窗）與 `time_test_features`（晚視窗）。
+產生的 E3 config 會把自己的 `features` 指向早視窗，E1 仍使用全視窗，避免同一路徑被誤當成兩種觀測窗口。
+缺少早視窗路徑或與全視窗路徑相同時，在建立批次輸出目錄之前拒絕產生設定。
+單獨手寫 E3 config 時，`features` 就直接指定早視窗，不需要 suite 專用欄位。
+路徑不同不代表上游計算一定正確，仍需 A 提供交易截止時間與版本證據。
+
 ## 指標定義
 
 - PR-AUC 使用 sklearn Average Precision（AP），不是 trapezoidal PR AUC。

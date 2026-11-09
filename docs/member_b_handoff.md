@@ -78,7 +78,9 @@ bash scripts/run_b.sh suite configs/member_b.example.yaml configs/generated-memb
 ```
 
 只產生可檢閱的 YAML，不自動訓練或看 test。相對路徑會轉成絕對路徑。
-輸出 E1 S1/S2 × 五 seeds、可行的 E2 非金額群組移除 × 五 seeds；有時間特徵時加入 E3。
+輸出 E1 S1/S2 × 五 seeds、可行的 E2 非金額群組移除 × 五 seeds。
+產生時間實驗時，base config 的 `features` 是全視窗基準，另提供 `time_train_features`（早視窗）及 `time_test_features`（晚視窗）。
+產生器只把 E3 的 `features` 改為早視窗，E1 保留全視窗；缺少獨立早視窗路徑會報錯。不要以全視窗特徵訓練 E3。
 E2 只跑 XGBoost；S1 移除 amount 已等於 S2，避免重跑。E5 由 E1 五 seeds 彙整。
 C 輸入／manifest 不會從 base 複製到所有 seeds，需每份設定接入正確變體。
 每份設定依序 tune → 檢視 validation 記錄 → finalize；需要解釋的 run 再 explain。
@@ -137,4 +139,4 @@ C 輸入／manifest 不會從 base 複製到所有 seeds，需每份設定接入
 bash scripts/smoke_b.sh /tmp/aml-b-smoke-new
 ```
 
-正式結果目前位於 `reports/member_b/results/results.md`，如實標示 pending。
+執行 aggregate 後才會產生 `reports/member_b/results/results.md`；全新 clone 不包含本機產出的報告。目前尚無正式結果，產生的章節應如實標示 pending。
