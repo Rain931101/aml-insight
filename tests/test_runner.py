@@ -211,3 +211,17 @@ def test_ablation_can_disable_rules(prepared):
     result = finalize(run)
     assert set(result) == {"xgboost"}
     assert json.loads((run / "columns.json").read_text()) == ["amount"]
+
+
+def test_e4_config_is_supported(prepared):
+    from aml_insight.evaluation.runner import load_config
+
+    cfg = yaml.safe_load(prepared.read_text())
+    cfg["experiment"] = "E4"
+    prepared.write_text(yaml.safe_dump(cfg))
+    loaded, _ = load_config(prepared)
+    assert loaded["experiment"] == "E4"
+    cfg["experiment"] = "E6"
+    prepared.write_text(yaml.safe_dump(cfg))
+    with pytest.raises(ValueError, match="Experiment must"):
+        load_config(prepared)
