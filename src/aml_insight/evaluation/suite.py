@@ -12,9 +12,22 @@ from aml_insight.evaluation.runner import load_config, resolve
 
 def generate_suite(config_path, output):
     base_cfg, base = load_config(config_path)
+    if base_cfg.get("time_test_features"):
+        early = base_cfg.get("time_train_features")
+        if not early or resolve(base, early) == resolve(base, base_cfg["features"]):
+            raise ValueError(
+                "Temporal suite requires separate time_train_features for early-window training; "
+                "features remains the full-window E1 baseline"
+            )
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=False)
-    for key in ("features", "time_test_features", "analysis_metadata", "output_root"):
+    for key in (
+        "features",
+        "time_train_features",
+        "time_test_features",
+        "analysis_metadata",
+        "output_root",
+    ):
         if base_cfg.get(key):
             base_cfg[key] = str(resolve(base, base_cfg[key]))
     base_cfg.setdefault("output_root", str(resolve(base, "../experiments")))
@@ -42,6 +55,10 @@ def generate_suite(config_path, output):
                 continue
             for seed in SEEDS:
                 cfg = deepcopy(base_cfg)
+                if experiment == "E3":
+                    cfg["features"] = base_cfg["time_train_features"]
+                # These are suite inputs only; each emitted run has one explicit training table.
+                cfg.pop("time_train_features", None)
                 suffix = "-without-" + "-".join(dropped) if dropped else ""
                 cfg.update(
                     experiment=experiment,
@@ -61,7 +78,9 @@ def generate_suite(config_path, output):
             "E5": "Aggregate E1 seed 0..4 artifacts; do not rerun the same test split",
             "E2_amount": "S1 without amount equals S2; compare E1 S1/S2 instead of rerunning",
             "E2_models": "XGBoost only; ablated rule features may no longer exist",
-            "E3": "Configured" if base_cfg.get("time_test_features") else "Pending A time features",
+            "E3": "Separate full/early/late feature paths configured"
+            if base_cfg.get("time_test_features")
+            else "Pending A time features",
             "GraphSAGE": "Attach C metadata and validation/test files for each exact variant",
         },
     )
