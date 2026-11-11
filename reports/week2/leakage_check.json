@@ -1,0 +1,32 @@
+{
+  "dataset": "20K_fanin200cycle200",
+  "cutoff": 89,
+  "accounts": 20000,
+  "window": [
+    1,
+    89
+  ],
+  "feature_columns": [
+    "active_step_count",
+    "in_amount_mean",
+    "in_amount_sum",
+    "in_degree",
+    "in_tx_count",
+    "init_balance",
+    "local_density",
+    "mean_interarrival_steps",
+    "median_interarrival_steps",
+    "neighbor_count",
+    "net_flow",
+    "out_amount_mean",
+    "out_amount_sum",
+    "out_degree",
+    "out_tx_count",
+    "two_hop_neighbor_count"
+  ],
+  "forbidden_columns_absent": true,
+  "future_transaction_invariance": true,
+  "graph_cutoff_invariance": true,
+  "graph_feature_invariance": true,
+  "checked_by": "scripts/05_leakage_check.py"
+}

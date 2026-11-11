@@ -256,8 +256,8 @@ def main() -> None:
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     FIG_DIR.mkdir(parents=True, exist_ok=True)
     parts = ["# Week 1 – 標籤、資料品質與洩漏分析\n",
-             "自動產生：`scripts/02_label_quality_analysis.py`。"
-             "所有數字皆由實際資料計算；單一欄位 AUC 為診斷用途，不代表模型效能。\n"]
+             ("自動產生：`scripts/02_label_quality_analysis.py`。"
+              "所有數字皆由實際資料計算；單一欄位 AUC 為診斷用途，不代表模型效能。\n")]
     summaries = []
     for name in DATASETS:
         text, summ = analyze(name)

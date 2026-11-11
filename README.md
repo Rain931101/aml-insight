@@ -45,6 +45,23 @@ uv run pytest                                       # 基本測試
 
 > 註：torch 限制為 `<2.12`，因為 2.12 以後不再提供 macOS 13 的 wheel。
 
+## Member A：資料與圖建置
+
+取得 AMLSim 樣本後，以下流程會輸出帳戶特徵、S1/S2 Parquet、NetworkX/PyG 圖資料、EDA 圖與資料檢查報告：
+
+```bash
+uv run python scripts/03_build_features_graph.py
+uv run python scripts/04_eda.py
+uv run python scripts/05_leakage_check.py
+uv run python scripts/06_build_e2_variants.py
+uv run python scripts/07_create_member_a_notebooks.py
+uv run python scripts/08_embed_member_a_notebook_outputs.py
+```
+
+PyG 檔案會輸出到 `data/processed/graph_s1.pt`、`data/processed/graph_s2.pt`（`x`, `edge_index`, `edge_attr`, `y`, `node_id`）；`graph.pt` 是 S1 相容名稱。原始與衍生資料仍由 `.gitignore` 排除；執行腳本即可重建。Notebook 驗算與圖表在 `notebooks/A_week1_verify.ipynb`、`notebooks/A_week1_eda.ipynb`。
+
+同一流程另產生 E3 的 `time_train_features.parquet` / `time_test_features.parquet`（別名 `account_features_steps1_89.parquet` / `account_features_steps90_149.parquet`）、`feature_groups.json` 與含資料/code 版本、視窗和交易/邊數的 `time_windows.json`。每個時間窗的帳戶與圖結構特徵只由該窗交易重建。
+
 ## 專案結構
 
 ```

@@ -1,0 +1,19 @@
+{
+  "dataset": "20K_fanin200cycle200",
+  "accounts": 20000,
+  "fraud_accounts": 1804,
+  "fraud_rate": 0.0902,
+  "transactions": 120558,
+  "duplicate_rows": 1684,
+  "self_loop_rows": 15,
+  "isolated_accounts": 20,
+  "small_amount_threshold": 100.04,
+  "eda_plots": [
+    "A_eda_amount_distribution.png",
+    "A_eda_transactions_per_step.png",
+    "A_eda_degree_by_label.png",
+    "A_eda_event_counts.png",
+    "A_eda_amount_by_endpoint_labels.png",
+    "A_eda_fraudstep.png"
+  ]
+}

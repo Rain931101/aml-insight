@@ -21,7 +21,7 @@
 |---|---|---|---|---|
 | `nodeid` | int64 | 帳戶 ID，0..19999 連續且唯一 | ❌（僅識別） | 圖節點索引 |
 | `isFraud` | int8 (0/1) | 是否為洗錢模式成員 | ❌ **標籤** | 本專題的預測目標 |
-| `init_balance` | float64 | 模擬起始餘額 | ✅ | 單一欄位 AUC ≈ 0.51，無洩漏跡象 |
+| `init_balance` | float64 | 模擬起始餘額 | ✅（S1 amount 群組） | 單一欄位 AUC ≈ 0.51；依協定 S2 也排除此餘額特徵 |
 | `fraudStep` | int64 | 詐欺行為發生的 step；-1 = 無 | ❌ **洩漏** | 非詐欺帳戶全為 -1；≠ -1 時 100% 為詐欺。約 50% 詐欺帳戶也是 -1 |
 
 ## 3. `transactions.csv`（交易 / 邊層級）
@@ -36,12 +36,31 @@
 
 **這個版本沒有的欄位**（不得自行捏造）：交易類型、交易層級標籤、alert ID、pattern ID、客戶資料、國別、分行。
 
-## 4. 資料品質（主要資料集）
+## 3.1 衍生帳戶特徵（`src/aml_insight/features/account.py`）
+
+| 特徵 | 群組 | 定義 | S1 | S2 |
+|---|---|---|:---:|:---:|
+| `init_balance` | amount | nodes.csv 的模擬起始餘額；S2 依協定排除餘額訊號 | ✓ | — |
+| `in_amount_sum` / `out_amount_sum` | amount | 轉入 / 轉出金額總和 | ✓ | — |
+| `in_amount_mean` / `out_amount_mean` | amount | 轉入 / 轉出事件平均金額 | ✓ | — |
+| `net_flow` | amount | 轉入金額總和減轉出金額總和 | ✓ | — |
+| `in_tx_count` / `out_tx_count` | behavior | 符合時間窗的轉入 / 轉出事件列數；重複列仍逐筆計算 | ✓ | ✓ |
+| `active_step_count` | temporal | 帳戶作為任一端點的不同 step 數 | ✓ | ✓ |
+| `mean_interarrival_steps` / `median_interarrival_steps` | temporal | 帳戶作為任一端點之排序事件 step 差值平均 / 中位數；不足兩筆為 0 | ✓ | ✓ |
+| `in_degree` / `out_degree` | structure | 不同轉入來源 / 轉出目標帳戶數 | ✓ | ✓ |
+| `neighbor_count` | structure | 入/出鄰居聯集數，自身不計入 | ✓ | ✓ |
+| `local_density` | structure | 無向投影中直接鄰居誘導子圖的密度 | ✓ | ✓ |
+| `two_hop_neighbor_count` | structure | 距離恰為 2 的無向鄰居數（排除自身與 1-hop） | ✓ | ✓ |
+
+若提供 `min_step` / `max_step`，特徵與圖只使用含端點的時間窗 `min_step <= time <= max_step`；E3 輸出 step 1–89 與 90–149 兩張獨立特徵表。`nodeid` 用於對齊，不作模型輸入；`isFraud` 另存為目標，`fraudStep` 永不輸出為特徵。完整群組清單由 `FEATURE_GROUPS` 定義，建置流程另寫入 `data/processed/feature_groups.json` 供 B 的設定對照。
+
+## 4. 資料品質與前處理決策（主要資料集）
 
 - 無缺值；所有交易端點皆存在於 `nodes.csv`；金額皆 > 0。
-- 完全重複的交易列 1,684 筆（約 1.4%，同 sender/receiver/金額/step），同一帳戶對可有多筆交易 → **建圖時不可直接去重**，需保留多重邊或聚合為 count/sum/時間序列。
-- self-loop 15 筆，建圖時需決定保留或移除並記錄。
-- 20 個帳戶完全沒有交易（19,980 / 20,000 有交易）。
+- 完全重複的交易列 1,684 筆（約 1.4%，同 sender/receiver/金額/step），同一帳戶對可有多筆交易 → 清理模組保留原始事件列；建圖聚合成一條有向帳戶對邊，並保留 `transaction_count`、金額總和/平均、最早/最晚 step，因此交易 multiplicity 不會遺失。
+- self-loop 15 筆：預設保留為有效事件，因原始記錄本身未標示為錯誤。其對帳戶行為計數有貢獻，圖中以 self-edge 保留；鄰居集合不把自身算作鄰居。若後續實驗要排除，`clean_dataset(..., drop_self_loops=True)` 可重現此選項並須另記設定。
+- 20 個帳戶完全沒有交易：保留為孤立節點，節點數固定 20,000，行為計數/度數為 0；不捏造邊或刪除帳戶。
+- 清理與品質摘要由 `src/aml_insight/data/clean.py` 計算；正式特徵由 `src/aml_insight/features/account.py` 產生。原始列順序形成的 `tx_id` 只作識別欄位，不作特徵。
 
 ## 5. 重要發現與限制
 
