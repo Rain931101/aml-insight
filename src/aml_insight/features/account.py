@@ -8,7 +8,7 @@ from aml_insight.data.loader import LEAKAGE_COLUMNS
 
 AMOUNT_FEATURES = (
     "init_balance", "in_amount_sum", "in_amount_mean", "out_amount_sum",
-    "out_amount_mean", "net_flow",
+    "out_amount_mean", "net_flow", "min_amount",
 )
 BEHAVIOR_FEATURES = ("in_tx_count", "out_tx_count")
 TEMPORAL_FEATURES = (
@@ -64,6 +64,11 @@ def build_account_features(
     amount_cols = ["out_amount_sum", "out_amount_mean", "in_amount_sum", "in_amount_mean"]
     base[amount_cols] = base[amount_cols].fillna(0.0)
     base["net_flow"] = base["in_amount_sum"] - base["out_amount_sum"]
+    incident_amounts = pd.concat([
+        tx[["sourceNodeId", "value"]].rename(columns={"sourceNodeId": "nodeid"}),
+        tx[["targetNodeId", "value"]].rename(columns={"targetNodeId": "nodeid"}),
+    ], ignore_index=True)
+    base["min_amount"] = incident_amounts.groupby("nodeid").value.min().reindex(base.index).fillna(0.0)
 
     # Inter-arrival intervals are calculated separately for incoming and outgoing
     # events, then combined as event-to-event intervals per account.

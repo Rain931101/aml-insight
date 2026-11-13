@@ -31,20 +31,25 @@ def test_temporal_cutoff_and_amount_sets(mini):
     f = build_account_features(mini.nodes, mini.transactions, max_step=2, include_labels=True)
     assert f.loc[f.nodeid == 1, "in_tx_count"].iloc[0] == 3
     assert f.loc[f.nodeid == 1, "in_amount_sum"].iloc[0] == 15
+    assert f.loc[f.nodeid == 1, "min_amount"].iloc[0] == 5
+    assert f.loc[f.nodeid == 3, "min_amount"].iloc[0] == 0
     assert "out_amount_sum" in select_feature_set(f, "S1")
     assert "out_amount_sum" not in select_feature_set(f, "S2")
+    assert "min_amount" in select_feature_set(f, "S1")
+    assert "min_amount" not in select_feature_set(f, "S2")
     assert "init_balance" in select_feature_set(f, "S1")
     assert "init_balance" not in select_feature_set(f, "S2")
     assert "fraudStep" not in f.columns
     assert set().union(*map(set, FEATURE_GROUPS.values())) == {
         "init_balance", "in_amount_sum", "in_amount_mean", "out_amount_sum", "out_amount_mean",
-        "net_flow", "in_tx_count", "out_tx_count", "active_step_count", "mean_interarrival_steps",
+        "net_flow", "min_amount", "in_tx_count", "out_tx_count", "active_step_count", "mean_interarrival_steps",
         "median_interarrival_steps", "in_degree", "out_degree", "neighbor_count", "local_density",
         "two_hop_neighbor_count",
     }
     late = build_account_features(mini.nodes, mini.transactions, min_step=3, max_step=4)
     assert late.loc[late.nodeid == 2, "in_tx_count"].iloc[0] == 1
     assert late.loc[late.nodeid == 1, "in_tx_count"].iloc[0] == 1
+    assert late.loc[late.nodeid == 1, "min_amount"].iloc[0] == 4
     with pytest.raises(ValueError, match="min_step"):
         build_account_features(mini.nodes, mini.transactions, min_step=4, max_step=3)
 
