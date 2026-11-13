@@ -1,0 +1,125 @@
+{
+  "note": "Validation AP only (used for model selection). Test metrics are computed once by member B's finalize, not here.",
+  "runs": [
+    {
+      "setting": "S1",
+      "seed": 0,
+      "n_features": 16,
+      "best_params": {
+        "hidden": 64,
+        "lr": 0.01
+      },
+      "best_epoch": 493,
+      "validation_ap": 0.8885,
+      "seconds": 164.3
+    },
+    {
+      "setting": "S1",
+      "seed": 1,
+      "n_features": 16,
+      "best_params": {
+        "hidden": 64,
+        "lr": 0.01
+      },
+      "best_epoch": 500,
+      "validation_ap": 0.8885,
+      "seconds": 160.6
+    },
+    {
+      "setting": "S1",
+      "seed": 2,
+      "n_features": 16,
+      "best_params": {
+        "hidden": 64,
+        "lr": 0.01
+      },
+      "best_epoch": 401,
+      "validation_ap": 0.8611,
+      "seconds": 158.0
+    },
+    {
+      "setting": "S1",
+      "seed": 3,
+      "n_features": 16,
+      "best_params": {
+        "hidden": 64,
+        "lr": 0.01
+      },
+      "best_epoch": 461,
+      "validation_ap": 0.8702,
+      "seconds": 158.1
+    },
+    {
+      "setting": "S1",
+      "seed": 4,
+      "n_features": 16,
+      "best_params": {
+        "hidden": 64,
+        "lr": 0.01
+      },
+      "best_epoch": 474,
+      "validation_ap": 0.8549,
+      "seconds": 158.8
+    },
+    {
+      "setting": "S2",
+      "seed": 0,
+      "n_features": 10,
+      "best_params": {
+        "hidden": 64,
+        "lr": 0.01
+      },
+      "best_epoch": 500,
+      "validation_ap": 0.8878,
+      "seconds": 151.2
+    },
+    {
+      "setting": "S2",
+      "seed": 1,
+      "n_features": 10,
+      "best_params": {
+        "hidden": 64,
+        "lr": 0.01
+      },
+      "best_epoch": 442,
+      "validation_ap": 0.8878,
+      "seconds": 151.4
+    },
+    {
+      "setting": "S2",
+      "seed": 2,
+      "n_features": 10,
+      "best_params": {
+        "hidden": 64,
+        "lr": 0.01
+      },
+      "best_epoch": 462,
+      "validation_ap": 0.8645,
+      "seconds": 151.6
+    },
+    {
+      "setting": "S2",
+      "seed": 3,
+      "n_features": 10,
+      "best_params": {
+        "hidden": 64,
+        "lr": 0.01
+      },
+      "best_epoch": 499,
+      "validation_ap": 0.8703,
+      "seconds": 207.3
+    },
+    {
+      "setting": "S2",
+      "seed": 4,
+      "n_features": 10,
+      "best_params": {
+        "hidden": 64,
+        "lr": 0.01
+      },
+      "best_epoch": 494,
+      "validation_ap": 0.8598,
+      "seconds": 152.9
+    }
+  ]
+}

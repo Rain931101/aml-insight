@@ -62,6 +62,21 @@ PyG 檔案會輸出到 `data/processed/graph_s1.pt`、`data/processed/graph_s2.p
 
 同一流程另產生 E3 的 `time_train_features.parquet` / `time_test_features.parquet`（別名 `account_features_steps1_89.parquet` / `account_features_steps90_149.parquet`）、`feature_groups.json` 與含資料/code 版本、視窗和交易/邊數的 `time_windows.json`。每個時間窗的帳戶與圖結構特徵只由該窗交易重建。
 
+## 成員 C：GraphSAGE
+
+在 A 的 `03_build_features_graph.py` 之後執行，訓練 S1/S2 × seeds 0–4（CPU 約 30 分鐘）：
+
+```bash
+uv run python scripts/09_train_graphsage.py
+uv run python scripts/09_train_graphsage.py --setting S2 --seed 0   # 只跑一組
+```
+
+- 特徵、帳戶切分與欄位順序直接沿用 B 的 `load_features` / `stratified_split`，確保三個模型的比較條件一致。
+- 2 層 GraphSAGE（mean 聚合），轉帳邊加上反向邊；不使用 `edge_attr`，所以 S2 不會帶入金額。
+- 特徵先做 signed log1p，再用 **train 帳戶**的平均與標準差標準化；loss 只用 train 標籤。
+- 超參數與 epoch 只依 validation AP 選擇。test 帳戶只輸出分數，test 指標由 B 的 `finalize` 計算一次。
+- 輸出在 `data/processed/C/E1-<S>-seed<k>/`（`validation.csv`、`test.csv`、`metadata.json`），可直接填入 B config 的 `graphsage:` 區塊。
+
 ## 專案結構
 
 ```
