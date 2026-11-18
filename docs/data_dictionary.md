@@ -42,6 +42,7 @@
 |---|---|---|:---:|:---:|
 | `init_balance` | amount | nodes.csv 的模擬起始餘額；S2 依協定排除餘額訊號 | ✓ | — |
 | `in_amount_sum` / `out_amount_sum` | amount | 轉入 / 轉出金額總和 | ✓ | — |
+| `min_amount` | amount | 帳戶在所選時間窗內作為轉入或轉出端點的最低交易金額；沒有交易時為 0 | ✓ | — |
 | `in_amount_mean` / `out_amount_mean` | amount | 轉入 / 轉出事件平均金額 | ✓ | — |
 | `net_flow` | amount | 轉入金額總和減轉出金額總和 | ✓ | — |
 | `in_tx_count` / `out_tx_count` | behavior | 符合時間窗的轉入 / 轉出事件列數；重複列仍逐筆計算 | ✓ | ✓ |
