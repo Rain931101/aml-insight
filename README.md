@@ -3,7 +3,7 @@
 **結合圖神經網路與可解釋人工智慧之異常金流偵測與潛在洗錢網絡分析系統**
 *An Explainable Graph Neural Network System for Suspicious Transaction Detection and Potential Money Laundering Network Analysis*
 
-🔗 **線上平台**：<https://rain931101-aml-insight-apphome-1chuw9.streamlit.app/>（Streamlit Community Cloud；閒置 12 小時會休眠，開啟時按喚醒後等約 1 分鐘）
+🔗 **線上平台**：<https://aml-insight-apphome-1chuw9.streamlit.app/>（Streamlit Community Cloud；閒置 12 小時會休眠，開啟時按喚醒後等約 1 分鐘）
 
 > ⚠️ 研究用途。資料為 IBM AMLSim 合成資料；模型分數只代表模型在特定資料與設定下的預測，**不是犯罪證據**，也不代表在真實銀行環境中的效能。
 
@@ -81,7 +81,7 @@ uv run python scripts/09_train_graphsage.py --setting S2 --seed 0   # 只跑一�
 
 ## 平台雲端部署（Streamlit Community Cloud）
 
-- 網址：<https://rain931101-aml-insight-apphome-1chuw9.streamlit.app/>；push 到 `main` 後會自動重新部署。
+- 網址：<https://aml-insight-apphome-1chuw9.streamlit.app/>；push 到 `main` 後會自動重新部署。
 - 入口檔：`app/Home.py`；雲端依賴：`app/requirements.txt`（只裝平台需要的輕量套件，不裝 torch/XGBoost）。
 - 雲端第一次開啟時，會自動從 AMLSim 官方 repo（固定 commit）下載 3 個 20K 樣本，約 4 MB，不需要另外上傳資料。
 - 部署：到 <https://share.streamlit.io> 用 GitHub 登入 → Create app → 選本 repo、branch `main`、Main file path `app/Home.py`，Python 選 3.12。
