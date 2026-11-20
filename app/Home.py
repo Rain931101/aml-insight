@@ -9,9 +9,16 @@
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import pandas as pd
 import streamlit as st
 
+# 雲端（Streamlit Community Cloud）不會安裝本專案套件，直接把 src/ 加進路徑
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from aml_insight.data.fetch import ensure_samples
 from aml_insight.data.loader import DATASETS, RAW_DIR, load_dataset
 
 st.set_page_config(page_title="AML Insight", page_icon="🔎", layout="wide")
@@ -38,6 +45,16 @@ st.caption(
     "研究用途。資料為 IBM AMLSim 合成資料；模型分數只代表模型在特定資料與設定下的預測，"
     "**不是犯罪證據**。"
 )
+
+@st.cache_resource(show_spinner="第一次開啟：下載 AMLSim 樣本資料中…")
+def prepare_data() -> None:
+    ensure_samples()
+
+
+try:
+    prepare_data()
+except OSError as err:  # 網路或磁碟問題時仍顯示本機已有的資料
+    st.warning(f"無法自動下載 AMLSim 資料：{err}")
 
 available = [d for d in DATASETS if (RAW_DIR / d / "nodes.csv").exists()]
 if not available:
