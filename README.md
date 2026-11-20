@@ -77,6 +77,13 @@ uv run python scripts/09_train_graphsage.py --setting S2 --seed 0   # 只跑一�
 - 超參數與 epoch 只依 validation AP 選擇。test 帳戶只輸出分數，test 指標由 B 的 `finalize` 計算一次。
 - 輸出在 `data/processed/C/E1-<S>-seed<k>/`（`validation.csv`、`test.csv`、`metadata.json`），可直接填入 B config 的 `graphsage:` 區塊。
 
+## 平台雲端部署（Streamlit Community Cloud）
+
+- 入口檔：`app/Home.py`；雲端依賴：`app/requirements.txt`（只裝平台需要的輕量套件，不裝 torch/XGBoost）。
+- 雲端第一次開啟時，會自動從 AMLSim 官方 repo（固定 commit）下載 3 個 20K 樣本，約 4 MB，不需要另外上傳資料。
+- 部署：到 <https://share.streamlit.io> 用 GitHub 登入 → Create app → 選本 repo、branch `main`、Main file path `app/Home.py`，Python 選 3.12。
+- 之後新增的頁面若需要新套件，要同步加進 `app/requirements.txt`；需要模型分數等 `data/processed/` 檔案的頁面，雲端目前沒有這些檔案。
+
 ## 專案結構
 
 ```
