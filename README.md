@@ -145,3 +145,27 @@ bash scripts/run_b.sh --help
 設定範例：[configs/member_b.example.yaml](configs/member_b.example.yaml)。
 
 目前尚無 A 正式特徵、C GraphSAGE 或時間特徵，因此實作驗證使用測試資料；不代表正式 E1–E5 已完成。E2 包含特徵與圖結構消融；目前提供特徵群組移除，圖結構變體與 GraphSAGE 結果待 A／C。E4 為可解釋 AI 案例分析：B 提供 XGBoost + SHAP，與 C 的 GraphSAGE + GNNExplainer 代表案例對照仍 pending。
+
+
+## 研究分析工作台（本機改版）
+
+```bash
+uv run streamlit run app/Home.py --server.port 8511
+```
+
+提供研究總覽、資料鑑識、模型實驗、帳戶與交易網絡、SHAP 解釋及方法來源。
+模型結果重播 2026-11-16 的封存 E1 / E5；沒有線上訓練，也不把未完成研究當成結果。
+功能、來源及部署邊界見 [平台交接文件](docs/platform_research_workbench.md)。
+
+
+## 2026-11-23 研究補強
+
+完成55組AMLSim探索性補強與5組Elliptic時間切分方法複驗、圖與特徵消融、
+SHAP方向性／背景敏感性、8案例×3種子的GNNExplainer、重複事件與校準診斷。
+結果包含時間轉移退步、困難子群召回偏低，以及外部資料上樹模型優於本輪GNN，
+不宣稱GNN普遍優勝或真實銀行效能。原test已查看的界線保持揭露。
+
+[研究報告](reports/research_extension_2026-11-23/research_report.md) ·
+[執行與重現說明](research/2026-11-23/README.md) ·
+[文獻對照](research/2026-11-23/literature_review.md)。
+真人驗證依使用者要求略過；網站未部署、成果尚未推送GitHub。
