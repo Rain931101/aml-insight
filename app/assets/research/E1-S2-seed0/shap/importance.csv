@@ -1,0 +1,11 @@
+feature,mean_abs_shap
+out_tx_count,0.19785193514333255
+in_tx_count,0.15198756137933714
+out_degree,0.12234886675972122
+local_density,0.10282304064209699
+neighbor_count,0.09288936801944966
+active_step_count,0.06329697585568846
+two_hop_neighbor_count,0.05917813485805109
+in_degree,0.0590111111747936
+mean_interarrival_steps,0.02355969697780254
+median_interarrival_steps,0.019595110773557797

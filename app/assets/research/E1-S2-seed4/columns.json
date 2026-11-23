@@ -1,0 +1,12 @@
+[
+  "in_tx_count",
+  "out_tx_count",
+  "active_step_count",
+  "mean_interarrival_steps",
+  "median_interarrival_steps",
+  "in_degree",
+  "out_degree",
+  "neighbor_count",
+  "local_density",
+  "two_hop_neighbor_count"
+]

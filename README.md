@@ -168,4 +168,4 @@ SHAP方向性／背景敏感性、8案例×3種子的GNNExplainer、重複事件
 [研究報告](reports/research_extension_2026-11-23/research_report.md) ·
 [執行與重現說明](research/2026-11-23/README.md) ·
 [文獻對照](research/2026-11-23/literature_review.md)。
-真人驗證依使用者要求略過；網站未部署、成果尚未推送GitHub。
+真人驗證依使用者要求略過；新版網站尚未部署，研究成果與網站改版由獨立分支提供審查。

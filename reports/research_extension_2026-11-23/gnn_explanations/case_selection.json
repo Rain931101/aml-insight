@@ -1,0 +1,38 @@
+{
+  "rule": "two nearest validation cutoff per XGB TP/FP/FN/TN; tie nodeid",
+  "cases": [
+    {
+      "case": "TP",
+      "nodeid": 11367
+    },
+    {
+      "case": "TP",
+      "nodeid": 9754
+    },
+    {
+      "case": "FP",
+      "nodeid": 11466
+    },
+    {
+      "case": "FP",
+      "nodeid": 9320
+    },
+    {
+      "case": "FN",
+      "nodeid": 1015
+    },
+    {
+      "case": "FN",
+      "nodeid": 4645
+    },
+    {
+      "case": "TN",
+      "nodeid": 7174
+    },
+    {
+      "case": "TN",
+      "nodeid": 4967
+    }
+  ],
+  "missing_categories": []
+}

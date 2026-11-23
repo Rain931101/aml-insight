@@ -126,3 +126,10 @@ def test_graphsage_group_depends_on_c_training_config(tmp_path):
     )
     assert _group_key(cfg, a, "graphsage") != _group_key(cfg, b, "graphsage")
     assert _group_key(cfg, a, "xgboost") == _group_key(cfg, b, "xgboost")
+
+    write_json(
+        b / "graphsage_metadata.json",
+        {"training_config": {"epochs": 10, "selected_epoch": 8,
+                             "selected_params": {"hidden": 32}}, "feature_version": "v1"},
+    )
+    assert _group_key(cfg, a, "graphsage") == _group_key(cfg, b, "graphsage")

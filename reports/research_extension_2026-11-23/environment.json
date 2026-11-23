@@ -1,0 +1,18 @@
+{
+  "python": "3.11.15",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "uv_lock_sha256": "833f7e3fd5af9e8e7c7d2335ca193eed8d6669622108b0e7e44f2d90ce211a2a",
+  "versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "torch": "2.11.0",
+    "torch-geometric": "2.8.1",
+    "xgboost": "3.2.0",
+    "shap": "0.51.0",
+    "scikit-learn": "1.9.1",
+    "networkx": "3.6.1",
+    "scipy": "1.17.1"
+  },
+  "CPU_policy": "2 AMLSim workers + 1 Elliptic worker; torch/XGB threads=1",
+  "runtime_note": "Process-only macOS DYLD_LIBRARY_PATH uses sklearn libomp; no system package changes"
+}

@@ -1,0 +1,8 @@
+{
+  "change": "Only order of data.split and evaluation.metrics import statements; both pure definitions",
+  "all_non_import_AST_equal": true,
+  "files": {
+    "run_amlsim_sorted_import_order.py": "b3edb0babc9de85df5b80d7edec1cacdef73646be3aed4434928bfc936028f35",
+    "run_amlsim_initial_import_order.py": "bbb59ca45898eb3fdffa477fb4b3bc553350d1925c4dfde1772fe659500979e3"
+  }
+}

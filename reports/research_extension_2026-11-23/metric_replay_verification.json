@@ -1,0 +1,6 @@
+{
+  "new_model_records_checked": 85,
+  "max_ap_error": 0.0,
+  "old_sealed_e1_runs_unchanged": 10,
+  "checks": "Independent sklearn replay of AP, confusion matrices and F1; not new model selection or scientific test rerun"
+}

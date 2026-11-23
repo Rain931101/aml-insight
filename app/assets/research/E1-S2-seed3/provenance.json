@@ -1,0 +1,46 @@
+{
+  "python": "3.11.15",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "git_commit": "fe14d70bf77fc8487716bb442b563e5cd58ceb9a",
+  "source_sha256": {
+    "__init__.py": "97fe8bc434409bae6f4f9077f2dfa3c558fcc89d483fd094739985499b4402ad",
+    "data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/clean.py": "09a4f89cc5223c272757426da0628eb6b9edd2b95a98c5dcdcd52170585ddb49",
+    "data/loader.py": "bda9fee1ad6d2bc31a3eb957c384559e49b8fb9af43dd85b59ed0fe277db5441",
+    "data/split.py": "f8ea599cb53c453332fc64ba09a8b8fc7b6c168ff2a485f9f278e0ce141b2e95",
+    "evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evaluation/__main__.py": "78cf592a07d1e9ff299b4b479b0d90fc13c3f455a9a34f42b8dec27c6427fce1",
+    "evaluation/artifacts.py": "f0cf87731f70ae565dd3ac2b5a0d982153b79cf3c927865ffc3dd86c8f29a675",
+    "evaluation/inputs.py": "edeeb0ed7d36067d5ad9b0db2ec10ca4527f2eb7cb5c05fe666a4ab34c10457e",
+    "evaluation/metrics.py": "4d9117bcb485e359358b5bfa6d6efc2ae280b47722765934edb6203d9c7eb2be",
+    "evaluation/report.py": "e597cfa5be4000a145768441c0bdf44584fe88f1af5deced3ca01d48a514139b",
+    "evaluation/runner.py": "d3f714ff8f9c533e755c707326dd41bca025cf0cc719021ca86cf19d187a3036",
+    "evaluation/suite.py": "446fddec7ddc682a8a83eb7b519b05098e29653ee9048d76bfa9ea9eea6e4a84",
+    "explain/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "explain/shap.py": "cc8a2714c8326ed20e6db44aaa1e9c520f8b84bcdaac9bcba986557d37c97ba4",
+    "features/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "features/account.py": "15801a685d48ef9f027b50b7b395a946741dea4a299a6cc7aa79cb244e8e48ed",
+    "graph/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "graph/build.py": "811f4ddbc77d3aa380fd0a7a3b2b21ab2f47c6d51db5f9404019be750fdbfcc7",
+    "graph/variants.py": "b1ad2184359356b877cf17f8cf8bf876900bcb4f5f2b2401857b5af5e0f12746",
+    "models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/graphsage.py": "987d1d13d0a677a3805c56de1d223ccdf6557bd13c5c3d5db6df71caa3b1fafc",
+    "models/rule_based.py": "c22112ab8ad3d89aebceae249f8e04438b4e97129a24a2ec099ceb0cb5b70497",
+    "models/xgb.py": "ed89229947ed2537c458d355ace881b1aae300c59d33069502390b80c81ffd4d",
+    "viz/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.2.0",
+    "shap": "0.51.0",
+    "matplotlib": "3.11.2",
+    "pyarrow": "26.0.1",
+    "pyyaml": "6.0.3"
+  },
+  "feature_file": {
+    "path": "/Users/kenny/Desktop/專題/aml-insight-git/data/processed/features.parquet",
+    "sha256": "c6bc8f9ed3597b2c5eab21e5d0460043a6f013c71895199351f26f52ad634e72"
+  }
+}

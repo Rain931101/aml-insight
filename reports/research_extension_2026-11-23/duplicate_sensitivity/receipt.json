@@ -1,0 +1,6 @@
+{
+  "removed_duplicate_rows": 1684,
+  "account_pair_topology_unchanged": true,
+  "status": "post_hoc_fixed_model_input_sensitivity",
+  "limitations": "Not evidence duplicates are errors; primary event multiplicity preserved; no threshold retuning"
+}

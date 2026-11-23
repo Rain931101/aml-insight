@@ -1,0 +1,144 @@
+{
+  "dataset": "20K_fanin200cycle200",
+  "date": "2026-11-16",
+  "feature_version": "16 features; before min_amount addition",
+  "scope": "Existing held-out test results; exploratory browsing, no retraining",
+  "raw_sha256": {
+    "nodes.csv": "c43ac5dccc8bd18f2a67f13d7aaa2291664291410b911c00f8577a071d2a2113",
+    "transactions.csv": "5f650f8b4ce7cc328f1334c65e719496920c422191adbf9fe67f8ae7cfa99fd5"
+  },
+  "sources": [
+    {
+      "run": "E1-S1-seed0",
+      "metrics_sha256": "3d199065dab70a1c12f6f6c23333ee417d5717a1f8e3aa03bcbd1ad43501a839",
+      "source": "experiments/member-b-amlsim-e1-20261116/E1-S1-seed0"
+    },
+    {
+      "run": "E1-S1-seed1",
+      "metrics_sha256": "46303124ce8d4717376600535ff4399822843a885ddaf3a39635b283ce9ed35f",
+      "source": "experiments/member-b-amlsim-e1-20261116/E1-S1-seed1"
+    },
+    {
+      "run": "E1-S1-seed2",
+      "metrics_sha256": "d2b15210eda93cfdb9120a8c23432b6a66648f385e623b6400b76cda0a5ae47b",
+      "source": "experiments/member-b-amlsim-e1-20261116/E1-S1-seed2"
+    },
+    {
+      "run": "E1-S1-seed3",
+      "metrics_sha256": "ae9ef4015dad821d49488ee8fe5e29c9a5197f462882ce32806599638a1bcc3a",
+      "source": "experiments/member-b-amlsim-e1-20261116/E1-S1-seed3"
+    },
+    {
+      "run": "E1-S1-seed4",
+      "metrics_sha256": "0a29886732a5cc33d3e617f6af0e99aed3a3b6973d9345e1cf4f1547967a066a",
+      "source": "experiments/member-b-amlsim-e1-20261116/E1-S1-seed4"
+    },
+    {
+      "run": "E1-S2-seed0",
+      "metrics_sha256": "490fa2b3733bb8510208274b97ccfb4e5414fc9d5af5fafcc5eb6bb4bd3e63ff",
+      "source": "experiments/member-b-amlsim-e1-20261116/E1-S2-seed0"
+    },
+    {
+      "run": "E1-S2-seed1",
+      "metrics_sha256": "f70c1bfd0db65adcbf147a6b43b0eadf5046fb29390159ce969e452a76b83208",
+      "source": "experiments/member-b-amlsim-e1-20261116/E1-S2-seed1"
+    },
+    {
+      "run": "E1-S2-seed2",
+      "metrics_sha256": "ba74d52d9d8b6a91483653010b92650cef234acef1d5627a9fbbb51acd599e07",
+      "source": "experiments/member-b-amlsim-e1-20261116/E1-S2-seed2"
+    },
+    {
+      "run": "E1-S2-seed3",
+      "metrics_sha256": "573e154f72c9fb927fbee0af1c37379b60a57d6e4a50d50058641d92bdfd7164",
+      "source": "experiments/member-b-amlsim-e1-20261116/E1-S2-seed3"
+    },
+    {
+      "run": "E1-S2-seed4",
+      "metrics_sha256": "2e9a005cc4156d62bc0ef6a902cef29037b173c98efb11ee14e9633ad1dfefd0",
+      "source": "experiments/member-b-amlsim-e1-20261116/E1-S2-seed4"
+    }
+  ],
+  "files": {
+    "E1-S1-seed0/COMPLETE.json": "903c809eb8740476258b5172942c356c9c56e21fe0487cd18def4ba74f2f7c4f",
+    "E1-S1-seed0/columns.json": "08bff4172dcfe475b006525c08c3d2c845afeade4a8dafb177954cf0b136ddf6",
+    "E1-S1-seed0/manifest.json": "3e0977d706ac3a9f568b7cd2ae6f54f022461b8234a2af5e9d1580798a4a2921",
+    "E1-S1-seed0/metrics.json": "3d199065dab70a1c12f6f6c23333ee417d5717a1f8e3aa03bcbd1ad43501a839",
+    "E1-S1-seed0/predictions.csv": "56fd4d5277d5733b7ad35c3187c2831243cb365ae4e3322a7f2c5c0f9d54b38e",
+    "E1-S1-seed0/provenance.json": "94611806504d6fa9ff6265d7caf4de20483b56982ed879eea635ac01e2169bf7",
+    "E1-S1-seed0/selection.json": "d529c5c19ad777d0de72baf5e41afb9de20e93bf0da75b31456423442fd1a49b",
+    "E1-S1-seed0/shap/explanation.json": "071b8793baa3d717da18dc351755320e3d525a2ed22021bb3c332f10ef5c8aca",
+    "E1-S1-seed0/shap/faithfulness.json": "0069bf9e997f9028dd8dd9fba70bfde3486322271a7f829eb7394876d0385872",
+    "E1-S1-seed0/shap/importance.csv": "ddfcfef443b132fcd97431012fe6919f7543c56664b34b3cace6a4e36d19759f",
+    "E1-S1-seed0/shap/local_predictions.csv": "c6480af62073a4ed85c9db0305c290685998f2c02c2f56676aedc951d0a80dea",
+    "E1-S1-seed0/shap/values.csv": "34933dc1864bef3243efc42d6eff856c0ede654a9f46a2cc84209ff223380764",
+    "E1-S1-seed1/COMPLETE.json": "903c809eb8740476258b5172942c356c9c56e21fe0487cd18def4ba74f2f7c4f",
+    "E1-S1-seed1/columns.json": "08bff4172dcfe475b006525c08c3d2c845afeade4a8dafb177954cf0b136ddf6",
+    "E1-S1-seed1/manifest.json": "5c0e011f48756762588ade6804da74388f503862835edc5e00fa20c72d9cff84",
+    "E1-S1-seed1/metrics.json": "46303124ce8d4717376600535ff4399822843a885ddaf3a39635b283ce9ed35f",
+    "E1-S1-seed1/predictions.csv": "4efbf6ede6102388cd1c85fe279736ad2d4a57c8a79a7b637b21cc4292a891e4",
+    "E1-S1-seed1/provenance.json": "94611806504d6fa9ff6265d7caf4de20483b56982ed879eea635ac01e2169bf7",
+    "E1-S1-seed1/selection.json": "55bc51b20fc46cabfdf9bb1c7b433e3e40a096ca26b8783c3178cea31d8c3d12",
+    "E1-S1-seed2/COMPLETE.json": "903c809eb8740476258b5172942c356c9c56e21fe0487cd18def4ba74f2f7c4f",
+    "E1-S1-seed2/columns.json": "08bff4172dcfe475b006525c08c3d2c845afeade4a8dafb177954cf0b136ddf6",
+    "E1-S1-seed2/manifest.json": "016c2b952a66020fd9f758315387b3f19ebaf37dea8cbb532e047f4b2a690493",
+    "E1-S1-seed2/metrics.json": "d2b15210eda93cfdb9120a8c23432b6a66648f385e623b6400b76cda0a5ae47b",
+    "E1-S1-seed2/predictions.csv": "c66a736ca28f4e436b8614cad4d15a094d039e5fab927d6571fc820d75b9d7c9",
+    "E1-S1-seed2/provenance.json": "94611806504d6fa9ff6265d7caf4de20483b56982ed879eea635ac01e2169bf7",
+    "E1-S1-seed2/selection.json": "5c97cffee4c300dca8f1076a5dd54c7e6591233d578eda164b497104996cb35f",
+    "E1-S1-seed3/COMPLETE.json": "903c809eb8740476258b5172942c356c9c56e21fe0487cd18def4ba74f2f7c4f",
+    "E1-S1-seed3/columns.json": "08bff4172dcfe475b006525c08c3d2c845afeade4a8dafb177954cf0b136ddf6",
+    "E1-S1-seed3/manifest.json": "87e713b65554e214efb609a8640c230b15608d02c8ce1516b7ae4d48f6f681ca",
+    "E1-S1-seed3/metrics.json": "ae9ef4015dad821d49488ee8fe5e29c9a5197f462882ce32806599638a1bcc3a",
+    "E1-S1-seed3/predictions.csv": "922c3b71311476de1d0c40b4d8484ff491cb4edab6d87c2ca04a3751dde69aa9",
+    "E1-S1-seed3/provenance.json": "94611806504d6fa9ff6265d7caf4de20483b56982ed879eea635ac01e2169bf7",
+    "E1-S1-seed3/selection.json": "ac94d0a2574941b89357a048df0af75e665637e8629da05e1d0dd1d26fdd9905",
+    "E1-S1-seed4/COMPLETE.json": "903c809eb8740476258b5172942c356c9c56e21fe0487cd18def4ba74f2f7c4f",
+    "E1-S1-seed4/columns.json": "08bff4172dcfe475b006525c08c3d2c845afeade4a8dafb177954cf0b136ddf6",
+    "E1-S1-seed4/manifest.json": "75dbc8c47948685fd41570bde9bacb4f8f8892317fedd00a00272fbb847bce70",
+    "E1-S1-seed4/metrics.json": "0a29886732a5cc33d3e617f6af0e99aed3a3b6973d9345e1cf4f1547967a066a",
+    "E1-S1-seed4/predictions.csv": "e034941d92c5be64a30d91fac2a56a1297fb4d1961dd3a5b3fa9a5d5838ed4dd",
+    "E1-S1-seed4/provenance.json": "94611806504d6fa9ff6265d7caf4de20483b56982ed879eea635ac01e2169bf7",
+    "E1-S1-seed4/selection.json": "3ce5c0e61f7cdf415ec0fd2bf3560868c71cb52c31d86d80ad643b2d5ab88212",
+    "E1-S2-seed0/COMPLETE.json": "903c809eb8740476258b5172942c356c9c56e21fe0487cd18def4ba74f2f7c4f",
+    "E1-S2-seed0/columns.json": "59a316a67e9e533a9eb807256eb009743c28abc7548d15be084d37afd368fd2a",
+    "E1-S2-seed0/manifest.json": "3e0977d706ac3a9f568b7cd2ae6f54f022461b8234a2af5e9d1580798a4a2921",
+    "E1-S2-seed0/metrics.json": "490fa2b3733bb8510208274b97ccfb4e5414fc9d5af5fafcc5eb6bb4bd3e63ff",
+    "E1-S2-seed0/predictions.csv": "447f25740ac2f610c94f2a07940984777978a312513547791909c00b91da67bc",
+    "E1-S2-seed0/provenance.json": "94611806504d6fa9ff6265d7caf4de20483b56982ed879eea635ac01e2169bf7",
+    "E1-S2-seed0/selection.json": "41f73a024ca7f79c79ff6f993634a795ff5051b09d06a0f46bcd335461be23cf",
+    "E1-S2-seed0/shap/explanation.json": "2fc609607b1cbf5f7ade6e900889848c5c3268c8c09addadd099dd01463ff229",
+    "E1-S2-seed0/shap/faithfulness.json": "47e3cfbe952e5bdbd5c82bf108fd55c3579a41fc52a356a6bdb39fe2fb1a76dc",
+    "E1-S2-seed0/shap/importance.csv": "08e2b8a86ca3af76500a13665dfe5d3aec7cd0e7b89ac381a43addce23da4ff0",
+    "E1-S2-seed0/shap/local_predictions.csv": "8ae791537e54b798769272ab264326f248aa3c1007c284dbc27913916e009770",
+    "E1-S2-seed0/shap/values.csv": "e4e25f5b522f748f09f7efcc7c20dbf544d07f3d85de9926030d870fa469d0c1",
+    "E1-S2-seed1/COMPLETE.json": "903c809eb8740476258b5172942c356c9c56e21fe0487cd18def4ba74f2f7c4f",
+    "E1-S2-seed1/columns.json": "59a316a67e9e533a9eb807256eb009743c28abc7548d15be084d37afd368fd2a",
+    "E1-S2-seed1/manifest.json": "5c0e011f48756762588ade6804da74388f503862835edc5e00fa20c72d9cff84",
+    "E1-S2-seed1/metrics.json": "f70c1bfd0db65adcbf147a6b43b0eadf5046fb29390159ce969e452a76b83208",
+    "E1-S2-seed1/predictions.csv": "5d64d7d88f072338ca684bc8ec552a5c5b16ec83f5718b8db9635adb56294b24",
+    "E1-S2-seed1/provenance.json": "94611806504d6fa9ff6265d7caf4de20483b56982ed879eea635ac01e2169bf7",
+    "E1-S2-seed1/selection.json": "f2083d8ebad71665d7bb38c115f6f588167bfc67d3192b3ae7e5c16e6a25c275",
+    "E1-S2-seed2/COMPLETE.json": "903c809eb8740476258b5172942c356c9c56e21fe0487cd18def4ba74f2f7c4f",
+    "E1-S2-seed2/columns.json": "59a316a67e9e533a9eb807256eb009743c28abc7548d15be084d37afd368fd2a",
+    "E1-S2-seed2/manifest.json": "016c2b952a66020fd9f758315387b3f19ebaf37dea8cbb532e047f4b2a690493",
+    "E1-S2-seed2/metrics.json": "ba74d52d9d8b6a91483653010b92650cef234acef1d5627a9fbbb51acd599e07",
+    "E1-S2-seed2/predictions.csv": "115742363d7de69bbf6c92ea951b4c96e77225af70e4ecdfb05907ad2d41397f",
+    "E1-S2-seed2/provenance.json": "94611806504d6fa9ff6265d7caf4de20483b56982ed879eea635ac01e2169bf7",
+    "E1-S2-seed2/selection.json": "b3fdce97530e4212efbc1a642b83a513a1c541a9041c5e8a3840f48ea455df96",
+    "E1-S2-seed3/COMPLETE.json": "903c809eb8740476258b5172942c356c9c56e21fe0487cd18def4ba74f2f7c4f",
+    "E1-S2-seed3/columns.json": "59a316a67e9e533a9eb807256eb009743c28abc7548d15be084d37afd368fd2a",
+    "E1-S2-seed3/manifest.json": "87e713b65554e214efb609a8640c230b15608d02c8ce1516b7ae4d48f6f681ca",
+    "E1-S2-seed3/metrics.json": "573e154f72c9fb927fbee0af1c37379b60a57d6e4a50d50058641d92bdfd7164",
+    "E1-S2-seed3/predictions.csv": "68d33361a6db250457d300d28ca2e1648bc7531af132e90dbedf09983c333e17",
+    "E1-S2-seed3/provenance.json": "94611806504d6fa9ff6265d7caf4de20483b56982ed879eea635ac01e2169bf7",
+    "E1-S2-seed3/selection.json": "8518552bfc350b220624f2cbf256fe4fef9508e3a38baddbc82e465e75111609",
+    "E1-S2-seed4/COMPLETE.json": "903c809eb8740476258b5172942c356c9c56e21fe0487cd18def4ba74f2f7c4f",
+    "E1-S2-seed4/columns.json": "59a316a67e9e533a9eb807256eb009743c28abc7548d15be084d37afd368fd2a",
+    "E1-S2-seed4/manifest.json": "75dbc8c47948685fd41570bde9bacb4f8f8892317fedd00a00272fbb847bce70",
+    "E1-S2-seed4/metrics.json": "2e9a005cc4156d62bc0ef6a902cef29037b173c98efb11ee14e9633ad1dfefd0",
+    "E1-S2-seed4/predictions.csv": "936166b964f57f26ae9badfd75673febfcab2af51718e02f464835eab4e6b9be",
+    "E1-S2-seed4/provenance.json": "94611806504d6fa9ff6265d7caf4de20483b56982ed879eea635ac01e2169bf7",
+    "E1-S2-seed4/selection.json": "3cdbdd54bf952f03fe0abe83034d18c240a682e4a2f62cd31cd103017b61c933"
+  }
+}
