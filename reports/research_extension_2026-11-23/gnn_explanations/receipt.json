@@ -1,0 +1,42 @@
+{
+  "gnn_checkpoint_sha": "8ab231ae4b7258d910b2fc8ce2612bf6696c7cd0b9acab8782c2a59692c88c52",
+  "xgb_checkpoint_sha": "5e254310fbffab590fe5825bdf45fb0f256692f9339c1267c2e8e90901eb0acb",
+  "explanation_target": "raw logit centered at locked validation threshold; model prediction not ground truth",
+  "limitations": [
+    "Exploratory boundary cases, not representative population",
+    "Masking is not causal",
+    "Zero-mask pair ties are broken by node ID; report active-mask count alongside stability",
+    "Subgraph timing excludes loading/network/browser/human review"
+  ],
+  "files": {
+    "local_inference_timings.csv": "60cbd7259e2b2168789e876a29f1aa556d102e3e8d087f58d12c5e43c3233d69",
+    "stability.csv": "753f294ed4ee88762a5630839cc6b77ffc02cfade0c1c57fdf97a4bb4fe4f28e",
+    "masking.csv": "62deea226012f8cec78508f5b8c53bef32f4f75d86912788d046a8fc1749f049",
+    "case_selection.json": "152f7f56ebb1b81351f38e6e54ffa5cd29935afec6b41499af51f0e2d5669005",
+    "paired_xgb_shap.csv": "49e45bef11119fdbaea6f9e3f8e36aa88e76ba5e8b45a9e81b8e630a8e838094",
+    "9754/edge_mask_seed2.csv": "2fe1bb448d649450652d73ca3948f9d70b544be4b082ce7e402d1e8ccf54d705",
+    "9754/edge_mask_seed1.csv": "46cf88d84fd411f0c763c7470f6abd7cb2d53c7ef2fa5a0ddc9540457c3af55e",
+    "9754/edge_mask_seed0.csv": "5c4e8d169ddbd037b45ad3ee9bd6d637f24978749fe8ff6301ead8f09a9bcce0",
+    "4967/edge_mask_seed2.csv": "62c50602b15f8a1ce68aecf3845424ba08dfc0fe5364a0025470829cadac3dff",
+    "4967/edge_mask_seed1.csv": "ad7020e87ca99478cf27569f2e2cffbc2269883e227f97a2f72a72e7bbb7d9db",
+    "4967/edge_mask_seed0.csv": "f50b319eaafeb2484d0a662a413597d2bad63aab554d30a9c26aceb4f7b240a8",
+    "7174/edge_mask_seed2.csv": "0b6a188f26556f3fcc6441ff8a762d5a34fdf7bdcad8279c68493fd8aebea8b4",
+    "7174/edge_mask_seed1.csv": "d7afee0a9d499b2f5eaa696e21f2aac6704d2f6edb7d81d40352eb971ebbc211",
+    "7174/edge_mask_seed0.csv": "975f8fc8b167918eeb57f643356a94bac10e7d0c7d19898782af16264a9f5ba5",
+    "11466/edge_mask_seed2.csv": "365ae088d3e847ccd9687ed704384c4712ea52487d72a1197e9bdccfda8809fd",
+    "11466/edge_mask_seed1.csv": "697cd81324c25e3f012564f91f97233eee8c57e14fb99474df0cf1d358f48142",
+    "11466/edge_mask_seed0.csv": "66f23415e958033a0d0637f608140a439692dd3f8e6505beb04263f6df014855",
+    "9320/edge_mask_seed2.csv": "e26933d040ead284d8141221f66115d18557345d77627ea40a509f8e657aebb8",
+    "9320/edge_mask_seed1.csv": "e199db2230b0bcb0098f11524a8352c6f58bb53f1871ff5d63f163c76acbd335",
+    "9320/edge_mask_seed0.csv": "7816c63a65e5ed925d225b8a30af3f917791181486341b81dc257a11aa7858d5",
+    "4645/edge_mask_seed2.csv": "8163623101bf2a458f426b0b517d7e069f8dee17314793c83733c171fbc143dd",
+    "4645/edge_mask_seed1.csv": "f300e1bfc3b7083051a9cab8b6adf5e74bbd39ee8978dd8f57b58e8450e931d1",
+    "4645/edge_mask_seed0.csv": "60e1e9ed5a9e90c1056a18cd87c5027986a32a8d8abc30e855a253a975674451",
+    "11367/edge_mask_seed2.csv": "4df29f753a01923dee7ceb34c0d977dcd1a55f1598b5e04e020a93f91748af27",
+    "11367/edge_mask_seed1.csv": "8b818878888a6177e272e4735b3169c7619126ef476dde79d10769e97aba964e",
+    "11367/edge_mask_seed0.csv": "92cbb8076b2b3557efab153adaa393340c6176ae2cd80ba0c5f13dc55d4224cb",
+    "1015/edge_mask_seed2.csv": "965a8def6c300d83c418f5cff04fcfbe3f0974ab7997aa1ab4aa0e1264f4f981",
+    "1015/edge_mask_seed1.csv": "1d18513ca31629976ff716256c1f6b48de82313793b754005e678cdafa0347d1",
+    "1015/edge_mask_seed0.csv": "782244ce13445a3bc28dcee0f096c69bcc300b23176ea5437c92ae5db0106447"
+  }
+}

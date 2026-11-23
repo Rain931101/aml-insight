@@ -1,0 +1,121 @@
+{
+  "samples": [
+    {
+      "dataset": "20K_cycle200",
+      "accounts": 20000,
+      "transactions": 117805,
+      "positive_accounts": 945,
+      "positive_rate": 0.04725,
+      "account_ids_unique": true,
+      "binary_labels": true,
+      "missing_values": 0,
+      "finite_amounts": true,
+      "missing_endpoints": 0,
+      "duplicate_event_rows": 1420,
+      "self_transfer_rows": 14,
+      "time_min": 1,
+      "time_max": 149,
+      "inactive_accounts": 20,
+      "inactive_positives": 0,
+      "small_transactions": 1899,
+      "small_both_positive": 1899,
+      "components": 21,
+      "largest_component": 19980,
+      "sha256": {
+        "nodes.csv": "3a3d40e9055b45c80bc148c4306ed51d3a5b9ce43fcd143c1a0f5d9e34289cbe",
+        "transactions.csv": "fda09438a776a21d1c40dd2ed7f58892e0065a4540af2874ca479ee27794514f"
+      }
+    },
+    {
+      "dataset": "20K_fanin200",
+      "accounts": 20000,
+      "transactions": 118250,
+      "positive_accounts": 954,
+      "positive_rate": 0.0477,
+      "account_ids_unique": true,
+      "binary_labels": true,
+      "missing_values": 0,
+      "finite_amounts": true,
+      "missing_endpoints": 0,
+      "duplicate_event_rows": 254,
+      "self_transfer_rows": 14,
+      "time_min": 1,
+      "time_max": 149,
+      "inactive_accounts": 20,
+      "inactive_positives": 0,
+      "small_transactions": 1854,
+      "small_both_positive": 1854,
+      "components": 21,
+      "largest_component": 19980,
+      "sha256": {
+        "nodes.csv": "78ea3a55b75c4daaf4f43c59a0da624c8b6d04869235510fda046a386d84f065",
+        "transactions.csv": "e56ed0df72cdf4f4b872cb0493800f72fd98e802627515a2484098eee998f36a"
+      }
+    },
+    {
+      "dataset": "20K_fanin200cycle200",
+      "accounts": 20000,
+      "transactions": 120558,
+      "positive_accounts": 1804,
+      "positive_rate": 0.0902,
+      "account_ids_unique": true,
+      "binary_labels": true,
+      "missing_values": 0,
+      "finite_amounts": true,
+      "missing_endpoints": 0,
+      "duplicate_event_rows": 1684,
+      "self_transfer_rows": 15,
+      "time_min": 1,
+      "time_max": 149,
+      "inactive_accounts": 20,
+      "inactive_positives": 0,
+      "small_transactions": 3695,
+      "small_both_positive": 3695,
+      "components": 21,
+      "largest_component": 19980,
+      "sha256": {
+        "nodes.csv": "c43ac5dccc8bd18f2a67f13d7aaa2291664291410b911c00f8577a071d2a2113",
+        "transactions.csv": "5f650f8b4ce7cc328f1334c65e719496920c422191adbf9fe67f8ae7cfa99fd5"
+      }
+    }
+  ],
+  "overlaps": [
+    {
+      "a": "20K_cycle200",
+      "b": "20K_fanin200",
+      "shared_distinct_event_rows": 5791,
+      "distinct_a": 116385,
+      "distinct_b": 117996,
+      "jaccard_events": 0.025333566647709874,
+      "same_numeric_nodeids": 20000,
+      "label_disagreements_for_same_numeric_id": 1697
+    },
+    {
+      "a": "20K_cycle200",
+      "b": "20K_fanin200cycle200",
+      "shared_distinct_event_rows": 6054,
+      "distinct_a": 116385,
+      "distinct_b": 118874,
+      "jaccard_events": 0.026413036364826246,
+      "same_numeric_nodeids": 20000,
+      "label_disagreements_for_same_numeric_id": 859
+    },
+    {
+      "a": "20K_fanin200",
+      "b": "20K_fanin200cycle200",
+      "shared_distinct_event_rows": 4827,
+      "distinct_a": 117996,
+      "distinct_b": 118874,
+      "jaccard_events": 0.02080217890649578,
+      "same_numeric_nodeids": 20000,
+      "label_disagreements_for_same_numeric_id": 2434
+    }
+  ],
+  "interpretation": [
+    "Repeated numeric node IDs do not establish real entity identity across samples.",
+    "Exact shared event tuples establish sample dependence; not independent external validation.",
+    "Duplicate tuples may be legitimate repeated simulated events; preserve primary analysis and run sensitivity only.",
+    "Static account labels cannot establish individual transaction criminality or onset time.",
+    "Connected-component holdout feasibility must be checked; do not split a giant component and call it independent."
+  ]
+}

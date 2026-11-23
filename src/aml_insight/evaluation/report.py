@@ -95,7 +95,8 @@ def _group_key(cfg, run, model=None):
     if model == "graphsage":
         c_meta = read_json(run / "graphsage_metadata.json")
         training = dict(c_meta.get("training_config", {}))
-        for key in ("seed", "random_state"):
+        # Selection outputs can differ by seed while the search protocol stays fixed.
+        for key in ("seed", "random_state", "selected_params", "selected_epoch"):
             training.pop(key, None)
         identity["graphsage"] = {
             "training_config": training,

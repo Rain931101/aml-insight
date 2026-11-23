@@ -1,10 +1,4 @@
-# Streamlit Community Cloud 專用的輕量依賴（本機開發請用 uv sync）。
-# 放在 app/（入口檔所在資料夾），雲端會優先使用這份，而不是根目錄的 uv.lock，
-# 避免在雲端安裝 torch/XGBoost 等大型套件。之後頁面需要新套件時要同步加在這裡。
-streamlit==1.66.1
-pandas>=2.2
-numpy>=1.26
-pyarrow>=16
-plotly>=5.24
-networkx>=3.3
-pyvis>=0.3.2
+streamlit>=1.45,<2
+pandas>=2.2,<3
+numpy>=1.26,<3
+plotly>=5.24,<8

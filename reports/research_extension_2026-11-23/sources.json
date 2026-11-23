@@ -1,0 +1,242 @@
+[
+  {
+    "path": "experiments/research-extension-20261123/gnn-full-seed0",
+    "metrics_sha": "3794e7c26973ab17873faf6029cf0a91714ec82039da59cfaa9ca0fdec6e036f"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-full-seed1",
+    "metrics_sha": "b1b021f542853cfcc0838e06a9672c06c130904291f688c98bed85cb7a8e9df6"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-full-seed2",
+    "metrics_sha": "662323c4c4214b96b54421b67d104502f8373753178652b577a6b6180c1d086e"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-full-seed3",
+    "metrics_sha": "d3ef5896cd5a70e7cf69423442fd54425f5007c9e71ef28114f6d21c28300dff"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-full-seed4",
+    "metrics_sha": "a60bc82ed3324140dcbae23e785a7f375c1934a83e77d9bfad391e95d79c1c80"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-no_edges-seed0",
+    "metrics_sha": "b6b7618239bd7d0878fb1139c95039a5f2cbbaaef9285e79eb3a7e5f7652e713"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-no_edges-seed1",
+    "metrics_sha": "aff27f98d46f97a563cd6ad834394bbd91f033f0471a57187795da7004867068"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-no_edges-seed2",
+    "metrics_sha": "c00e00605a0c3afdf13910de933199b3c26e2741a73ee68f8f5d20dac3653b2d"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-no_edges-seed3",
+    "metrics_sha": "38eefae14da19b47d1a10be790afc88bf1a50892f8a4b48d70617f642decd829"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-no_edges-seed4",
+    "metrics_sha": "da479e4349497187a947373c12d75f1100838339857fb1e2ebfe05df36499bf8"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-rewire-seed0",
+    "metrics_sha": "f728f9fc1cfc540af227d76c557733bab2aea83c681c6fe79f4bfaa32e8c729d"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-rewire-seed1",
+    "metrics_sha": "e39dab344fc5cff0aa9f81c3c4692931fa9b7ac76c4b5c7bd280c66c60480d0c"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-rewire-seed2",
+    "metrics_sha": "a53466a38e529741b5a5053c32672c9c049688d2293163a09496788845e5a761"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-rewire-seed3",
+    "metrics_sha": "f98a0df13e069c4ef18fb43b0ddf923c6072ed43737b91769baca3fe6d92abb5"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-rewire-seed4",
+    "metrics_sha": "4af28e75505fd8d99a3aa05c16c093b5d3f2ce544bcffd70cd98cebb4909a23b"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-drop50-seed0",
+    "metrics_sha": "b0a1ef04a50da72cf91c9fbed71f7773e2067d8397f17a385a40f4f997965762"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-drop50-seed1",
+    "metrics_sha": "bcec3de149587271fdae9bd5ccfcb86c9fa9817f91e9a959c84b985cca07ea08"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-drop50-seed2",
+    "metrics_sha": "cfcc2d172e5c5f4672e830446e94c647a9e38e8cb360912cbeaead98157e35fc"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-drop50-seed3",
+    "metrics_sha": "8a3fef4702cf79470c89f8fa6d404c16ea4ad7e61c4a1748212d897f57205896"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-drop50-seed4",
+    "metrics_sha": "d5b72761f78fccd17b48c9ff7d9889ba00190747bececaa1be718bc1f4ff0416"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-no_structure-seed0",
+    "metrics_sha": "4bae15bd375ebc5f330e999b338125b73749c07d4c8587413e1b0b6109c852f9"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-no_structure-seed1",
+    "metrics_sha": "4b3f0b64b322bff7d6066a2bf4ba44fbc6aa9b26461a15f8d68b1af71231f09b"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-no_structure-seed2",
+    "metrics_sha": "e195426a548bf3405d234f17636ef9306d8bdce60210e8903fa1121444353f69"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-no_structure-seed3",
+    "metrics_sha": "898c522f18c500586f7f8089dde496b14db56e4da04fe7de17510764c75a40ac"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-no_structure-seed4",
+    "metrics_sha": "f3d03ecb40b509506bf14f396ab9a3e65caf0be82f963297a7e8d038e47856b3"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-early_late-seed0",
+    "metrics_sha": "5824a1502261bbf8f16540d2065a662c9dbcda3bde5cf690a4038404d0793f06"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-early_late-seed1",
+    "metrics_sha": "6fd93874a11b636926938eac4902d5aa57147669b7fd48696480d81886fe44a8"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-early_late-seed2",
+    "metrics_sha": "b01b0f3fc91c3d7d4f50fb1a92b3f1be93de51c7896f52bb63634e095661831e"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-early_late-seed3",
+    "metrics_sha": "c47781dba9c598de9e46fb217b47e73515a7f3895c9654e300ac8192753b39a9"
+  },
+  {
+    "path": "experiments/research-extension-20261123/gnn-early_late-seed4",
+    "metrics_sha": "acb9798184d1c36019fc962f07f9f203f389904ecd40fe0c1908d18bf6336fc5"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-full-seed0",
+    "metrics_sha": "4c9cb2711c3ff4834fc526fddf70183bd464f427b63413a2d0438db89264cdbc"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-full-seed1",
+    "metrics_sha": "548a1bb7ee4b424904cd6aaf0e387b8d8a2e633f0fa5edb05acfc372db67796d"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-full-seed2",
+    "metrics_sha": "5b515cf65cb57dfafc7736b29e3d87ac5264ce900f8c93586349ee882cc6c931"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-full-seed3",
+    "metrics_sha": "356e0824aff30e7350468d18cbd111b6a39b422a9e8cf9c4cf6a44bc044a5251"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-full-seed4",
+    "metrics_sha": "a9760634469476da2719504510028514c4c4c3f3e446101bb868d1adf603d478"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_structure-seed0",
+    "metrics_sha": "86bbabec4d45f5d906f9a713f027411a70786ebe5b3bee2d5ed479c05a2d7c89"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_structure-seed1",
+    "metrics_sha": "9afe048f4781d49aedffc6a8eea1fa2faf4e97d49eead27b974e538251c1bdb8"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_structure-seed2",
+    "metrics_sha": "fd8871e9f339def857ecfe8d41b458705f2dea86b49f8f549e50a611c3bb96cf"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_structure-seed3",
+    "metrics_sha": "7709db7aa7f957d6c6267ff6c2d26be62cce9856543e52065f57e356248dfdeb"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_structure-seed4",
+    "metrics_sha": "bd96c4f326ab8b2f54fd4ae4426dd6bed82c44bc2df6b1fc2fa94e0e0a3de0f0"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_behavior-seed0",
+    "metrics_sha": "3cc5fdf9965ef9a9ef17f7141d22596cf3be69711cd190a4cc5bb80ce388267a"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_behavior-seed1",
+    "metrics_sha": "a2e10c9b4b540f35a3e2902521bee799b2f9f1889794ea75af90a5f210ce07fe"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_behavior-seed2",
+    "metrics_sha": "20a0689ffdcc8796aa402b931068e3173bb652b09d407a746cf308c57e2ae1f0"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_behavior-seed3",
+    "metrics_sha": "969a09f2c6d953995cd6df248ebe435b0337da4d2f77408d51198a1a91f5d194"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_behavior-seed4",
+    "metrics_sha": "20ea5a7dc101daa31890fdbdd4ff72db51d9424cdc12be8eae42591ce0dca97b"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_temporal-seed0",
+    "metrics_sha": "a9f6704fa156fb9158f60b1dd9db1aa07fd4a7ad5eb7e2e79d43489d662a48f6"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_temporal-seed1",
+    "metrics_sha": "d3261a3be93cc82394aa875d64034a9017f17685e8af024318d42ef9b1a1ed38"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_temporal-seed2",
+    "metrics_sha": "a52c17848dc2ee879add5caa37e73f48dfe29a9b9704f1f175f9c80df7dc3f52"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_temporal-seed3",
+    "metrics_sha": "f1213f3e67cc299ed5bf191cc06ba42b28e08ead48d3a66e042d7c990df29c8d"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-no_temporal-seed4",
+    "metrics_sha": "f0f1b7e2bed5d64a6bbe3498fe30b3d3e8f73ef7f7b5f7db20057653d00c26bc"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-early_late-seed0",
+    "metrics_sha": "22914b5f0156ae0c77df58ddd457d9ceb59d2889ef4648b4417651360c180149"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-early_late-seed1",
+    "metrics_sha": "760695b63674debdb69eb4bc306ca52a7d7730fe18d5609aefae8d0d6b126ccd"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-early_late-seed2",
+    "metrics_sha": "08b9b9261b2c83133d1649a0f413dd21acdb82799403a1f435ff778ebfd5709a"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-early_late-seed3",
+    "metrics_sha": "900c7ec022e2762ade31a080dd0bf18fb7b2064e2b3ef725f5a8e646e73ddc5b"
+  },
+  {
+    "path": "experiments/research-extension-20261123/tabular-early_late-seed4",
+    "metrics_sha": "02c600f29efe19fcd6fd1df4a7655a8f5111cf2bfde825d940d6c98a402d4004"
+  },
+  {
+    "path": "data/processed/research_extension_20261123/elliptic/runs/seed0",
+    "metrics_sha": "5e043600fa9f58f40ca90e03fd1c7f666fa7ee33599ed219764cd6992dca16af"
+  },
+  {
+    "path": "data/processed/research_extension_20261123/elliptic/runs/seed1",
+    "metrics_sha": "fac716d1563e5d39580b6106081ee3da2cb4b198ea5ec4efa9fab6104e9b8ee6"
+  },
+  {
+    "path": "data/processed/research_extension_20261123/elliptic/runs/seed2",
+    "metrics_sha": "2074bc3a18d979f7b43859ff4f02224ac87e68589851415920a5b7b2a91327dd"
+  },
+  {
+    "path": "data/processed/research_extension_20261123/elliptic/runs/seed3",
+    "metrics_sha": "24b0efd11f2166d4b3b2275258d2b93e053600d0937f12c883e2fba4f9ea3ec9"
+  },
+  {
+    "path": "data/processed/research_extension_20261123/elliptic/runs/seed4",
+    "metrics_sha": "4e546ef0f9595ac731d33e5ceb3f125165e7809b845b0094e3cd31c0f75842a6"
+  }
+]

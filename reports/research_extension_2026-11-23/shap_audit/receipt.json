@@ -1,0 +1,29 @@
+{
+  "models": [
+    {
+      "setting": "S1",
+      "model_sha": "1ea8480118143f03d3ea26ac00aab3a34796cecb4a9b7b9b2b0758e2daae67d4",
+      "original_shap_receipt_sha": "1f445d262c1a83d2e541b4f90ec985e99c44bf51b2dec7f98edf605d54af5f49",
+      "n": 200,
+      "threshold": 0.7202544212341309
+    },
+    {
+      "setting": "S2",
+      "model_sha": "5e254310fbffab590fe5825bdf45fb0f256692f9339c1267c2e8e90901eb0acb",
+      "original_shap_receipt_sha": "94b8d2ea9cf428568e18eaf13bf2f7cdeb3898851654d52bdaaccc0d4273b538",
+      "n": 200,
+      "threshold": 0.7699952125549316
+    }
+  ],
+  "limitation": "Post-hoc exploration on seen test; model-confidence masking, not causal or human validation",
+  "files": {
+    "S1-background2.csv": "d5f8b6d3da949c5b5b2af083cac26be4920bcf79367cebaa33cf77d78634f413",
+    "S1-background1.csv": "c13d1bd0e7290b1b416406a57aaaaac811d8db9b029002c0e707fc7354e5316c",
+    "stability_summary.csv": "0be8ca1a52db0b86f1fd1d1fc8f40e8dbd8d35412da948103219dfa77bd6bb49",
+    "directional_summary.csv": "0bcbf60d1477f679cb0f0bb1830e8871f7fb28da40c24a2978b52f3eb22dc4e6",
+    "background_stability.csv": "871f1e9c2d9088a33527f397701ea510c82ab49f50f05256140fc1a644756be2",
+    "S2-background2.csv": "552849aa8317690205919adbddccc84c08efeea7c04c2e75c98f9e60909c9047",
+    "S2-background1.csv": "a544970124279ccbec357a2f1a38c870a5fc9de19b43df61d3540226aac3c626",
+    "directional_masking.csv": "65b9abb6fa28c1754a78d1cf921880be50fa358fd3136dc7066c40479abe4c88"
+  }
+}

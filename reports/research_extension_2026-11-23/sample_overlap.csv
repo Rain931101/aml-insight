@@ -1,0 +1,4 @@
+a,b,shared_distinct_event_rows,distinct_a,distinct_b,jaccard_events,same_numeric_nodeids,label_disagreements_for_same_numeric_id
+20K_cycle200,20K_fanin200,5791,116385,117996,0.025333566647709874,20000,1697
+20K_cycle200,20K_fanin200cycle200,6054,116385,118874,0.026413036364826246,20000,859
+20K_fanin200,20K_fanin200cycle200,4827,117996,118874,0.02080217890649578,20000,2434
